@@ -82,7 +82,7 @@ activate :blog do |blog|
 
   blog.custom_collections = {
     category: {
-      link: "/{category}.html",
+      link: "/{category}/index.html",
       template: "/category.html"
     }
   }
@@ -104,6 +104,18 @@ page "/robots.txt", layout: false
 #   end
 # end
 
+helpers do
+  # カテゴリー一覧を取得するヘルパー
+  def get_taxonomies( slug = 'category' )
+    list = []
+    blog.articles.select{ |i| i.data[slug].present? }.each do |article|
+      list = list.push article.data[slug]
+    end
+
+    return list.inject( Hash.new(0) ){|hash, a| hash[a] += 1; hash}
+  end
+end
+
 # Build-specific configuration
 configure :build do
   # Minify HTML on build
@@ -115,6 +127,8 @@ configure :build do
   # Minify Javascript on build
   activate :minify_javascript
 
+  activate :asset_hash
+  
   # middleman build 実行後に gulp build を実行する
   #after_build do
   #  system( 'gulp build' )

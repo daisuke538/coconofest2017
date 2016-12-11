@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+
+set -eo pipefail
+
+prepare() {
+  bundle --binstubs | grep -v '^Using'
+  rm -rf coverage
+}
+
+check_style() {
+  rubocop
+}
+
+run_tests() {
+  bin/rake spec:unit
+  bin/rake spec:features
+}
+
+main() {
+  prepare
+  check_style
+  run_tests
+
+}
+
+main $@

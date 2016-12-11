@@ -1,0 +1,16 @@
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+/Users/komiya-daisuke/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20161211-57513-ej54qe.rb extconf.rb
+creating Makefile
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" clean
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR="
+compiling ruby_http_parser.c
+compiling ryah_http_parser.c
+linking shared-object ruby_http_parser.bundle
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/http_parser.rb-0.6.0/ext/ruby_http_parser
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_http_parser.bundle ./.gem.20161211-57513-1t7pd1y

@@ -128,7 +128,7 @@ configure :build do
   activate :minify_javascript
 
   activate :asset_hash
-  
+
   # middleman build 実行後に gulp build を実行する
   #after_build do
   #  system( 'gulp build' )

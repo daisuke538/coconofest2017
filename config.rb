@@ -140,6 +140,7 @@ configure :build do
 
   # middleman build 実行後に gulp build を実行する
   after_build do
+    system( 'gulp imagemin' )
     system( 'gulp build' )
   end
 end

@@ -13,12 +13,11 @@ gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 # Middleman Gems
 gem "middleman"
 gem "middleman-blog"
-#gem "middleman-deploy"
+gem 'middleman-deploy', '~> 2.0.0.pre.alpha'  # 正式版はMiddleman v4に未対応のためα版を使用
 gem "middleman-livereload"
 gem "middleman-minify-html"
-gem "middleman-imageoptim"
 
-gem "bootstrap-sass", require: false
+#gem "bootstrap-sass", require: false
 gem "autoprefixer-rails"
 gem 'redcarpet'
 gem "slim"

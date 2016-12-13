@@ -5,6 +5,8 @@ general:
 
 machine:
   timezone: Asia/Tokyo
+  node:
+    version: v7.0.0
 
 test:
   override:
@@ -12,7 +14,7 @@ test:
 
 deployment:
   publish:
-    branch: develop 
+    branch: master
     commands:
       - git config --global user.name "daisuke538"
       - git config --global user.email "lovelikerock538@gmail.com"

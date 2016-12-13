@@ -1,6 +1,6 @@
 /*!
 
- handlebars v1.3.0
+ handlebars v1.1.2
 
 Copyright (C) 2011 by Yehuda Katz
 
@@ -24,7 +24,6 @@ THE SOFTWARE.
 
 @license
 */
-/* exported Handlebars */
 var Handlebars = (function() {
 // handlebars/safe-string.js
 var __module3__ = (function() {
@@ -47,7 +46,6 @@ var __module3__ = (function() {
 var __module2__ = (function(__dependency1__) {
   "use strict";
   var __exports__ = {};
-  /*jshint -W004 */
   var SafeString = __dependency1__;
 
   var escape = {
@@ -68,7 +66,7 @@ var __module2__ = (function(__dependency1__) {
 
   function extend(obj, value) {
     for(var key in value) {
-      if(Object.prototype.hasOwnProperty.call(value, key)) {
+      if(value.hasOwnProperty(key)) {
         obj[key] = value[key];
       }
     }
@@ -132,24 +130,12 @@ var __module4__ = (function() {
 
   var errorProps = ['description', 'fileName', 'lineNumber', 'message', 'name', 'number', 'stack'];
 
-  function Exception(message, node) {
-    var line;
-    if (node && node.firstLine) {
-      line = node.firstLine;
-
-      message += ' - ' + line + ':' + node.firstColumn;
-    }
-
-    var tmp = Error.prototype.constructor.call(this, message);
+  function Exception(/* message */) {
+    var tmp = Error.prototype.constructor.apply(this, arguments);
 
     // Unfortunately errors are not enumerable in Chrome (at least), so `for prop in tmp` doesn't work.
     for (var idx = 0; idx < errorProps.length; idx++) {
       this[errorProps[idx]] = tmp[errorProps[idx]];
-    }
-
-    if (line) {
-      this.lineNumber = line;
-      this.column = node.firstColumn;
     }
   }
 
@@ -163,10 +149,11 @@ var __module4__ = (function() {
 var __module1__ = (function(__dependency1__, __dependency2__) {
   "use strict";
   var __exports__ = {};
+  /*globals Exception, Utils */
   var Utils = __dependency1__;
   var Exception = __dependency2__;
 
-  var VERSION = "1.3.0";
+  var VERSION = "1.1.2";
   __exports__.VERSION = VERSION;var COMPILER_REVISION = 4;
   __exports__.COMPILER_REVISION = COMPILER_REVISION;
   var REVISION_CHANGES = {
@@ -218,7 +205,7 @@ var __module1__ = (function(__dependency1__, __dependency2__) {
       if(arguments.length === 2) {
         return undefined;
       } else {
-        throw new Exception("Missing helper: '" + arg + "'");
+        throw new Error("Missing helper: '" + arg + "'");
       }
     });
 
@@ -257,7 +244,7 @@ var __module1__ = (function(__dependency1__, __dependency2__) {
           for(var j = context.length; i<j; i++) {
             if (data) {
               data.index = i;
-              data.first = (i === 0);
+              data.first = (i === 0)
               data.last  = (i === (context.length-1));
             }
             ret = ret + fn(context[i], { data: data });
@@ -265,11 +252,7 @@ var __module1__ = (function(__dependency1__, __dependency2__) {
         } else {
           for(var key in context) {
             if(context.hasOwnProperty(key)) {
-              if(data) { 
-                data.key = key; 
-                data.index = i;
-                data.first = (i === 0);
-              }
+              if(data) { data.key = key; }
               ret = ret + fn(context[key], {data: data});
               i++;
             }
@@ -349,6 +332,7 @@ var __module1__ = (function(__dependency1__, __dependency2__) {
 var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
   "use strict";
   var __exports__ = {};
+  /*global Utils */
   var Utils = __dependency1__;
   var Exception = __dependency2__;
   var COMPILER_REVISION = __dependency3__.COMPILER_REVISION;
@@ -362,37 +346,42 @@ var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
       if (compilerRevision < currentRevision) {
         var runtimeVersions = REVISION_CHANGES[currentRevision],
             compilerVersions = REVISION_CHANGES[compilerRevision];
-        throw new Exception("Template was precompiled with an older version of Handlebars than the current runtime. "+
+        throw new Error("Template was precompiled with an older version of Handlebars than the current runtime. "+
               "Please update your precompiler to a newer version ("+runtimeVersions+") or downgrade your runtime to an older version ("+compilerVersions+").");
       } else {
         // Use the embedded version info since the runtime doesn't know about this revision yet
-        throw new Exception("Template was precompiled with a newer version of Handlebars than the current runtime. "+
+        throw new Error("Template was precompiled with a newer version of Handlebars than the current runtime. "+
               "Please update your runtime to a newer version ("+compilerInfo[1]+").");
       }
     }
   }
 
-  __exports__.checkRevision = checkRevision;// TODO: Remove this line and break up compilePartial
+  // TODO: Remove this line and break up compilePartial
 
   function template(templateSpec, env) {
     if (!env) {
-      throw new Exception("No environment passed to template");
+      throw new Error("No environment passed to template");
     }
 
-    // Note: Using env.VM references rather than local var references throughout this section to allow
-    // for external users to override these as psuedo-supported APIs.
-    var invokePartialWrapper = function(partial, name, context, helpers, partials, data) {
-      var result = env.VM.invokePartial.apply(this, arguments);
-      if (result != null) { return result; }
+    var invokePartialWrapper;
+    if (env.compile) {
+      invokePartialWrapper = function(partial, name, context, helpers, partials, data) {
+        // TODO : Check this for all inputs and the options handling (partial flag, etc). This feels
+        // like there should be a common exec path
+        var result = invokePartial.apply(this, arguments);
+        if (result) { return result; }
 
-      if (env.compile) {
         var options = { helpers: helpers, partials: partials, data: data };
         partials[name] = env.compile(partial, { data: data !== undefined }, env);
         return partials[name](context, options);
-      } else {
+      };
+    } else {
+      invokePartialWrapper = function(partial, name /* , context, helpers, partials, data */) {
+        var result = invokePartial.apply(this, arguments);
+        if (result) { return result; }
         throw new Exception("The partial " + name + " could not be compiled when running in runtime-only mode");
-      }
-    };
+      };
+    }
 
     // Just add water
     var container = {
@@ -418,8 +407,8 @@ var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
         }
         return ret;
       },
-      programWithDepth: env.VM.programWithDepth,
-      noop: env.VM.noop,
+      programWithDepth: programWithDepth,
+      noop: noop,
       compilerInfo: null
     };
 
@@ -441,7 +430,7 @@ var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
             options.data);
 
       if (!options.partial) {
-        env.VM.checkRevision(container.compilerInfo);
+        checkRevision(container.compilerInfo);
       }
 
       return result;
@@ -492,7 +481,6 @@ var __module5__ = (function(__dependency1__, __dependency2__, __dependency3__) {
 var __module0__ = (function(__dependency1__, __dependency2__, __dependency3__, __dependency4__, __dependency5__) {
   "use strict";
   var __exports__;
-  /*globals Handlebars: true */
   var base = __dependency1__;
 
   // Each of these augment the Handlebars object. No need to setup here.

@@ -1,8 +1,25 @@
-var gulp = require( 'gulp' );
-var sass = require( 'gulp-sass' );
-var cssnext = require( 'gulp-cssnext' );
-var ghPages = require( 'gulp-gh-pages' );
+var gulp        = require( 'gulp' );
+var sass        = require( 'gulp-sass' );
+var scss        = require( 'node-sass' );
+var cssnext     = require( 'gulp-cssnext' );
+var postcss     = require( 'gulp-postcss' );
+var cssnext     = require( 'postcss-cssnext' );
+var ghPages     = require( 'gulp-gh-pages' );
+var glob        = require( 'glob-all' );
+var filelog     = require( 'gulp-filelog' );
+var changed     = require( 'gulp-changed' );
+var imageResize = require( 'gulp-image-resize' );
+var imagemin    = require( 'gulp-imagemin' );
+var jpegoptim   = require( 'imagemin-jpegoptim' );
+var pngquant    = require( 'imagemin-pngquant' );
+var jpegtran    = require( 'imagemin-jpegtran' );
+//var optipng     = require( 'imagemin-optipng' );
 
+
+
+///////////
+// ビルド //
+///////////
 var commonPath = 'assets/';
 
 var paths = {
@@ -24,11 +41,14 @@ gulp.task( 'js', function() {
 });
 
 gulp.task( 'scss', function() {
+  var processors = [
+      cssnext()
+  ];
   // scssファイルをcssファイルに変換して圧縮する
   // cssnextは、CSSの先行実装を現状のブラウザが解釈できるCSSに変換する
   gulp.src( paths.scss + '**/*.scss' ).pipe( sass() ).on( 'error', function( err ) {
       console.log( err.message );
-    }).pipe( cssnext() ).pipe( gulp.dest( paths.css ) );
+    }).pipe( postcss( processors ) ).pipe( gulp.dest( paths.css ) );
 });
 
 gulp.task( 'images', function() {
@@ -47,7 +67,98 @@ gulp.task( 'watch', function() {
   gulp.watch( commonPath + 'images/**/*', ['images'] );
 });
 
+
+
+/////////////
+// デプロイ //
+/////////////
 gulp.task( 'deploy', function() {
-  return gulp.src( './build/**/*' )
-    .pipe( ghPages() );
+  return gulp.src( './build/**/*' ).pipe( ghPages() );
 });
+
+
+
+/////////////
+// 画像圧縮 //
+/////////////
+var imageminPaths = {
+  'inputDir' : 'build/images/',
+  'outputDir': 'build/images/'
+}
+
+gulp.task( 'imagemin', function() {
+  gulp.src( imageminPaths.inputDir + '*.jpg' )
+      .pipe( imagemin({
+            use: [jpegoptim({
+              progressive: true,
+              size: 70
+            })]
+        }) )
+      .pipe( gulp.dest( imageminPaths.outputDir ) );
+  gulp.src( imageminPaths.inputDir + '*.jpeg' )
+      .pipe( imagemin({
+            use: [jpegoptim({
+              progressive: true
+            })]
+        }) )
+      .pipe( gulp.dest( imageminPaths.outputDir ) );
+  gulp.src( imageminPaths.inputDir + '*.png' )
+      .pipe( imagemin({
+            use: [pngquant({
+              speed: 8,
+              quality: 70
+            })]
+        }) )
+      .pipe( gulp.dest( imageminPaths.outputDir ) );
+  gulp.src( imageminPaths.inputDir + '*.gif' )
+      .pipe( imagemin() )
+      .pipe( gulp.dest( imageminPaths.outputDir ) );
+  gulp.src( imageminPaths.inputDir + '*.svg' )
+      .pipe( imagemin() )
+      .pipe( gulp.dest( imageminPaths.outputDir ) );
+});
+
+
+//////////////////////////////////
+// サムネイル（アイキャッチ）画像生成 //
+//////////////////////////////////
+var imgPaths = {
+  srcDir : 'source',
+  prvDir : 'prv',
+  dstDir : 'prd',
+  uploadsDir: '/posts'
+}
+
+gulp.task( 'image-resize:eyecatch', function() {
+  var srcGlobs   = glob.sync( 'source/posts/**/images/' );
+  var srcDir     = 'origin';
+  var dstDir     = 'eyecatch';
+  var targetFile = '/*.+(jpg|jpeg|png|gif)';
+
+  var resizeOptions = {
+    // 記事のサムネイル画像サイズを設定
+    width       : 600,
+    height      : 400,
+    gravity     : 'Center',
+    crop        : true,
+    upscale     : false,
+    imageMagick : true
+  };
+
+  var imageminOptions = {
+    optimizationLevel: 7
+  };
+
+  for( var item in srcGlobs ) {
+    var srcGlob = srcGlobs[item] + srcDir + targetFile;
+    var dstGlob = srcGlobs[item] + dstDir;
+
+    gulp.src( srcGlob )
+      .pipe( changed( dstGlob ) )
+      .pipe( imageResize( resizeOptions ) )
+      .pipe( gulp.dest( dstGlob ) )
+      .pipe( filelog() );
+  }
+});
+
+gulp.task( 'image-resize', ['image-resize:eyecatch'] );

@@ -1,0 +1,19 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+
+machine:
+  timezone: Asia/Tokyo
+
+test:
+  override:
+    - bundle exec middleman build
+
+deployment:
+  publish:
+    branch: develop 
+    commands:
+      - git config --global user.name "daisuke538"
+      - git config --global user.email "lovelikerock538@gmail.com"
+      - bundle exec middleman deploy

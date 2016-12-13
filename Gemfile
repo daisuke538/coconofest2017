@@ -18,6 +18,8 @@ gem "middleman-livereload"
 gem "middleman-minify-html"
 gem "middleman-imageoptim"
 
+gem "bootstrap-sass", require: false
+gem "autoprefixer-rails"
 gem 'redcarpet'
 gem "slim"
 gem "html2slim"

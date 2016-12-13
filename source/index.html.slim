@@ -4,6 +4,14 @@ per_page: 10
 ---
 
 article
+  #windowWidth
+  #navWidth
+  #pixcel
+  #offset
+  #result
+
+  | あいうえお
+
   - if paginate && num_pages > 1
     p
       | Page
@@ -18,7 +26,7 @@ article
       = link_to article.title, article
       span
         = article.date.strftime('%b %e')
-    = article.body
+    / = article.body
   - if paginate
     - if next_page
       p

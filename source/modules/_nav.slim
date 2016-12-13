@@ -1,3 +1,22 @@
-nav#navi[role="navigation"]
-  h1
-    | navigation
+nav[role="navigation"]
+  #nav-mask
+    #nav-left
+    ul.nav-inner
+      li
+        = link_to 'HOME', 'index.html'
+      li
+        = link_to 'GUIDELINE', ''
+      li
+        = link_to 'ARTISTS', ''
+      li
+        = link_to 'TIMETABLE', ''
+      li
+        = link_to 'TICKETS', ''
+      li
+        = link_to 'SHOPS', ''
+      li
+        = link_to 'ACCESS&MAP', ''
+      li
+        = link_to 'SUPPORTERS', ''
+      li#right-end
+    #nav-right

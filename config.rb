@@ -29,12 +29,12 @@ set :markdown,
 set :slim,
     :format => :html,
     :sort_attrs => false,
-    :pretty => true,
-    :shortcut => {
-      "#" => {:tag => "div", :attr => "id"},
-      "." => {:tag => "div", :attr => "class"},
-      "&" => {:tag => "input", :attr => "type"}
-    }
+    :pretty => true
+#    :shortcut => {
+#      "#" => {:tag => "div", :attr => "id"},
+#      "." => {:tag => "div", :attr => "class"},
+#      "&" => {:tag => "input", :attr => "type"}
+#    }
 
 #page "404.html", :directory_index => false
 activate :directory_indexes
@@ -45,6 +45,12 @@ activate :directory_indexes
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page "/feed.xml", layout: false
+page "/sitemap.xml", layout: false
+page "/robots.txt", layout: false
+page "/category.html", layout: "list_layout"
+page "/tag.html", layout: "list_layout"
+# page "/calendar.html", layout: ""
 
 # With alternative layout
 # page "/path/to/file.html", layout: :otherlayout
@@ -62,9 +68,9 @@ activate :blog do |blog|
   # blog.prefix = "blog"
   blog.permalink = "{category}/{title}/index.html"
   # Matcher for blog source files
-  blog.sources = "posts/{year}/{month}{day}-{title}.html"
+  blog.sources = "posts/{year}/{month}/{day}/{title}/index.html"
   blog.taglink = "tags/{tag}/index.html"
-  blog.layout = "layouts/layout"
+  blog.layout = "layouts/article_layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
   blog.year_link = "{year}/index.html"
@@ -87,10 +93,6 @@ activate :blog do |blog|
     }
   }
 end
-
-page "/feed.xml", layout: false
-page "/sitemap.xml", layout: false
-page "/robots.txt", layout: false
 
 # Reload the browser automatically whenever files change
 # configure :development do
@@ -116,6 +118,11 @@ helpers do
   end
 end
 
+#activate :external_pipeline,
+#  name: :gulp,
+#  command: build? ? './node_modules/gulp/bin/gulp.js' : './node_modules/gulp/bin/gulp.js watch',
+#  source: "source"
+
 # Build-specific configuration
 configure :build do
   # Minify HTML on build
@@ -127,12 +134,14 @@ configure :build do
   # Minify Javascript on build
   activate :minify_javascript
 
+  #activate :gzip
+
   activate :asset_hash
 
   # middleman build 実行後に gulp build を実行する
-  #after_build do
-  #  system( 'gulp build' )
-  #end
+  after_build do
+    system( 'gulp build' )
+  end
 end
 
 # デプロイ設定

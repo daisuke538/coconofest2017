@@ -4,15 +4,126 @@ html
     meta[charset="utf-8"]
     meta[http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"]
     meta[name="viewport" content="width=device-width, initial-scale=1"]
+    link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"
+    link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet"
+    script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
+    = stylesheet_link_tag :style
+    / = javascript_include_tag :main
     title
       | Blog Title
       = ' - ' + current_article.title unless current_article.nil?
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
   body
-    #wrap[role="main"]
+    #container[role="main"]
       = partial('modules/header')
+      = partial('modules/nav')
       #main[role="main"]
         = yield
         = partial('modules/sidebar')
       = partial('modules/footer')
-      = partial('modules/nav')
+
+
+    javascript:
+      $( function() {
+        ///////////////////////////////
+        // ナビゲーションの両端に矢印表示 //
+        ///////////////////////////////
+
+        var windowWidth = 0;
+        var scrollCount = 0;
+        var offsetLeft = 0;
+        var navWidth = 0;
+        var fadeTime = 700;
+        var resizeTimer = null;
+        var scrollTimer = null;
+
+        ///// 初期状態 /////
+
+        // ウィンドウ横幅を取得
+        windowWidth = $( window ).width();
+        $( '#windowWidth' ).text( 'windowWidth: ' + windowWidth );
+
+        // navのスクロール分含む横幅を取得
+        navWidth = document.getElementById( 'nav-mask' ).scrollWidth;
+        $( '#navWidth' ).text( 'navWidth: ' + navWidth );
+
+        // 横スクロールが起きない場合
+        if( navWidth == windowWidth ) {
+          $( '#nav-right' ).css( 'display', 'none' );
+        }
+
+        ///// ウィンドウリサイズ時 /////
+
+        $( window ).resize( function() {
+          clearTimeout( resizeTimer );
+
+          resizeTimer = setTimeout( function() {
+            // ウィンドウ横幅を取得
+            windowWidth = $( window ).width();
+            $( '#windowWidth' ).text( 'windowWidth: ' + windowWidth );
+
+            // navのスクロール分含む横幅を取得
+            navWidth = document.getElementById( 'nav-mask' ).scrollWidth;
+            $( '#navWidth' ).text( 'navWidth: ' + navWidth );
+
+            // 横スクロールが起きない場合
+            if( navWidth == windowWidth ) {
+              $( '#nav-left' ).css( 'display', 'none' );
+              $( '#nav-right' ).css( 'display', 'none' );
+            } else if( navWidth > windowWidth ) {
+              $( '#nav-right' ).css( 'display', 'block' );
+            }
+          }, 250 );
+        });
+
+        ///// 横スクロール時 /////
+
+        $( '#nav-mask' ).scroll( function() {
+          clearTimeout( scrollTimer );
+
+          scrollCount = $( this ).scrollLeft();
+          offsetLeft = $( this ).offset().left;
+          navWidth = this.scrollWidth;
+
+          scrollTimer = setTimeout( function() {
+            // 右にスクロールした場合
+            if( scrollCount > 0 ) {
+              // 左の矢印を表示する
+              $( '#nav-left' ).fadeIn( fadeTime );
+            }
+
+            // 左端に到達した場合
+            if( scrollCount == 0 ) {
+              // 左の矢印を非表示にする
+              $( '#nav-left' ).fadeOut( fadeTime );
+            }
+
+            // 右端に到達した場合
+            if( navWidth == windowWidth + scrollCount ) {
+              $( '#nav-right' ).fadeOut( fadeTime );
+            } else {
+              $( '#nav-right' ).fadeIn( fadeTime );
+            }
+
+            $( '#pixcel' ).text( 'scrollCount: ' + scrollCount );
+            $( '#offset' ).text( 'offsetLeft: ' + offsetLeft );
+          }, 250 );
+        });
+
+        /////////////////////////////////////////
+        // ナビゲーション両端の矢印タップでスクロール //
+        /////////////////////////////////////////
+
+        $( '#nav-left' ).click( function() {
+          $( '#nav-mask' ).animate( { scrollLeft: 0 }, 350, 'swing' );
+          return false;
+        });
+
+        $( '#nav-right' ).click( function() {
+          $( '#nav-mask' ).animate( { scrollLeft: navWidth }, 1000, 'swing' );
+          return false;
+        });
+
+      });

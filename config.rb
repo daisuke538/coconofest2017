@@ -121,27 +121,34 @@ end
 #activate :external_pipeline,
 #  name: :gulp,
 #  command: build? ? './node_modules/gulp/bin/gulp.js' : './node_modules/gulp/bin/gulp.js watch',
-#  source: "source"
+#  source: 'source'
 
 # Build-specific configuration
 configure :build do
+  # ビルド対象外（下記ファイルはgulpでビルドする）
+  ignore 'stylesheets/*'
+  ignore 'javascripts/*'
+  ignore 'images/*'
+
   # Minify HTML on build
   activate :minify_html, :remove_quotes => false, :remove_intertag_spaces => true
 
   # Minify CSS on build
-  activate :minify_css
+  #activate :minify_css
 
   # Minify Javascript on build
-  activate :minify_javascript
+  #activate :minify_javascript
 
   #activate :gzip
 
   activate :asset_hash
 
-  # middleman build 実行後に gulp build を実行する
+  # middleman build 実行後にタスクランナーを実行
   after_build do
-    system( 'gulp imagemin' )
     system( 'gulp build' )
+
+    # 画像圧縮
+    system( 'gulp imagemin' )
   end
 end
 

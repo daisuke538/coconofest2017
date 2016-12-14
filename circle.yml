@@ -10,7 +10,7 @@ machine:
 
 test:
   override:
-    - bundle exec middleman build
+    - 'true'
 
 deployment:
   publish:

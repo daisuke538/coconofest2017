@@ -16,7 +16,7 @@ html
       = ' - ' + current_article.title unless current_article.nil?
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
   body
-    #container[role="main"]
+    article#container[role="main"]
       = partial('modules/header')
       = partial('modules/nav')
       #main[role="main"]

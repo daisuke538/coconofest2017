@@ -1,26 +1,33 @@
-var gulp        = require( 'gulp' );
-var sass        = require( 'gulp-sass' );
-var scss        = require( 'node-sass' );
-var cssnext     = require( 'gulp-cssnext' );
-var postcss     = require( 'gulp-postcss' );
-var cssnext     = require( 'postcss-cssnext' );
-var ghPages     = require( 'gulp-gh-pages' );
-var glob        = require( 'glob-all' );
-var filelog     = require( 'gulp-filelog' );
-var changed     = require( 'gulp-changed' );
-var imageResize = require( 'gulp-image-resize' );
-var imagemin    = require( 'gulp-imagemin' );
-var jpegoptim   = require( 'imagemin-jpegoptim' );
-var pngquant    = require( 'imagemin-pngquant' );
-var jpegtran    = require( 'imagemin-jpegtran' );
+var gulp         = require( 'gulp' );
+var sass         = require( 'gulp-sass' );
+var scss         = require( 'node-sass' );
+var cssnext      = require( 'gulp-cssnext' );
+var postcss      = require( 'gulp-postcss' );
+var cssnext      = require( 'postcss-cssnext' );
+var ghPages      = require( 'gulp-gh-pages' );
+var glob         = require( 'glob-all' );
+var filelog      = require( 'gulp-filelog' );
+var changed      = require( 'gulp-changed' );
+var imageResize  = require( 'gulp-image-resize' );
+var imagemin     = require( 'gulp-imagemin' );
+var jpegoptim    = require( 'imagemin-jpegoptim' );
+var pngquant     = require( 'imagemin-pngquant' );
+//var jpegtran    = require( 'imagemin-jpegtran' );
 //var optipng     = require( 'imagemin-optipng' );
+var concat       = require( 'gulp-concat' );
+var autoprefixer = require( 'gulp-autoprefixer' );
+var pleeease     = require( 'gulp-pleeease' );
+var rename       = require( 'gulp-rename' );
+var plumber      = require( 'gulp-plumber' );
+var uglify       = require( 'gulp-uglify' );
+var browserSync  = require( 'browser-sync' ).create();
 
 
 
 ///////////
 // ビルド //
 ///////////
-var commonPath = 'assets/';
+var commonPath = 'source/';
 
 var paths = {
   //'scss': 'assets/stylesheets/',
@@ -37,7 +44,9 @@ gulp.task('default', function(){
 gulp.task( 'js', function() {
   // タスクを実行するファイルを指定する
   // 実行する処理をpipeで繋いでいく（圧縮したファイルを build/javascripts に出力する）
-  gulp.src( commonPath + 'javascripts/**/*.js' ).pipe( gulp.dest( 'build/javascripts' ) );
+  gulp.src( commonPath + 'javascripts/**/*.js' )
+      .pipe( uglify() )
+      .pipe( gulp.dest( 'build/javascripts' ) );
 });
 
 gulp.task( 'scss', function() {
@@ -46,9 +55,25 @@ gulp.task( 'scss', function() {
   ];
   // scssファイルをcssファイルに変換して圧縮する
   // cssnextは、CSSの先行実装を現状のブラウザが解釈できるCSSに変換する
-  gulp.src( paths.scss + '**/*.scss' ).pipe( sass() ).on( 'error', function( err ) {
-      console.log( err.message );
-    }).pipe( postcss( processors ) ).pipe( gulp.dest( paths.css ) );
+  gulp.src( paths.scss + '**/*.scss' )
+      .pipe( plumber({
+        errorHandler: function( err ) {
+          console.log( err.messageFormatted );
+          this.emit( 'end' );
+        }
+      }) )
+      .pipe( sass({
+        style: 'compact'
+      }) )
+      .pipe( pleeease({
+        sass: true,
+        autoprefixer: true,
+        minifier: true
+      }) )
+      .pipe( postcss( processors ) )
+      .pipe( autoprefixer() )
+      .pipe( rename( 'style.css' ) )
+      .pipe( gulp.dest( paths.css ) );
 });
 
 gulp.task( 'images', function() {
@@ -162,3 +187,20 @@ gulp.task( 'image-resize:eyecatch', function() {
 });
 
 gulp.task( 'image-resize', ['image-resize:eyecatch'] );
+
+
+
+//////////////////
+// browser sync //
+//////////////////
+gulp.task( 'server', function() {
+  browserSync.init({
+    server: {
+      baseDir: './source'
+    }
+  })
+});
+
+gulp.task( 'reload', function() {
+  browserSync.reload();
+});

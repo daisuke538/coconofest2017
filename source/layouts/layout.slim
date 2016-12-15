@@ -27,9 +27,9 @@ html
 
     javascript:
       $( function() {
-        ///////////////////////////////
-        // ナビゲーションの両端に矢印表示 //
-        ///////////////////////////////
+        //////////////////////////
+        // メニューの両端に矢印表示 //
+        //////////////////////////
 
         var windowWidth = 0;
         var scrollCount = 0;
@@ -51,7 +51,7 @@ html
 
         // 横スクロールが起きない場合
         if( navWidth == windowWidth ) {
-          $( '#nav-right' ).css( 'display', 'none' );
+          $( '#arrow-right' ).css( 'display', 'none' );
         }
 
         ///// ウィンドウリサイズ時 /////
@@ -70,10 +70,10 @@ html
 
             // 横スクロールが起きない場合
             if( navWidth == windowWidth ) {
-              $( '#nav-left' ).css( 'display', 'none' );
-              $( '#nav-right' ).css( 'display', 'none' );
+              $( '#arrow-left' ).css( 'display', 'none' );
+              $( '#arrow-right' ).css( 'display', 'none' );
             } else if( navWidth > windowWidth ) {
-              $( '#nav-right' ).css( 'display', 'block' );
+              $( '#arrow-right' ).css( 'display', 'block' );
             }
           }, 250 );
         });
@@ -91,20 +91,20 @@ html
             // 右にスクロールした場合
             if( scrollCount > 0 ) {
               // 左の矢印を表示する
-              $( '#nav-left' ).fadeIn( fadeTime );
+              $( '#arrow-left' ).fadeIn( fadeTime );
             }
 
             // 左端に到達した場合
             if( scrollCount == 0 ) {
               // 左の矢印を非表示にする
-              $( '#nav-left' ).fadeOut( fadeTime );
+              $( '#arrow-left' ).fadeOut( fadeTime );
             }
 
             // 右端に到達した場合
             if( navWidth == windowWidth + scrollCount ) {
-              $( '#nav-right' ).fadeOut( fadeTime );
+              $( '#arrow-right' ).fadeOut( fadeTime );
             } else {
-              $( '#nav-right' ).fadeIn( fadeTime );
+              $( '#arrow-right' ).fadeIn( fadeTime );
             }
 
             $( '#pixcel' ).text( 'scrollCount: ' + scrollCount );
@@ -112,18 +112,48 @@ html
           }, 250 );
         });
 
-        /////////////////////////////////////////
-        // ナビゲーション両端の矢印タップでスクロール //
-        /////////////////////////////////////////
+        ////////////////////////////////////
+        // メニュー両端の矢印タップでスクロール //
+        ////////////////////////////////////
 
-        $( '#nav-left' ).click( function() {
+        $( '#arrow-left' ).click( function() {
           $( '#nav-mask' ).animate( { scrollLeft: 0 }, 350, 'swing' );
           return false;
         });
 
-        $( '#nav-right' ).click( function() {
+        $( '#arrow-right' ).click( function() {
           $( '#nav-mask' ).animate( { scrollLeft: navWidth }, 1000, 'swing' );
           return false;
         });
+
+        //////////////////////////////////
+        // メニューにアニメーションで下線付加 //
+        //////////////////////////////////
+        var current        = $( '.current' );
+        var nav_list       = $( '#nav-mask li' );
+        var menu_under_bar = $( '#menu-under-bar' );
+
+        nav_list.hover(
+          // ホバー時
+          function() {
+            // ホバーしているliの座標を取得
+            var index = nav_list.index( this );
+
+            menu_under_bar.css({
+              'width': $( nav_list[index] ).width(),
+              'left': $( nav_list[index] ).position().left
+            });
+          },
+          // ホバー解除時
+          function() {
+            var index = nav_list.index( this );
+            var elements = document.getElementsByClassName( 'current' );
+            
+            menu_under_bar.css({
+              'width': elements[0].clientWidth,
+              'left': elements[0].getBoundingClientRect().left
+            });
+          }
+        );
 
       });

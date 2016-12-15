@@ -1,13 +1,14 @@
 nav[role="navigation"]
   #nav-mask
-    #nav-left
+    #menu-under-bar
+    #arrow-left
     ul.nav-inner
-      li
+      li.current
         = link_to 'HOME', 'index.html'
       li
-        = link_to 'GUIDELINE', ''
+        = link_to 'GUIDELINE', 'guideline.html'
       li
-        = link_to 'ARTISTS', ''
+        = link_to 'LINEUP', ''
       li
         = link_to 'TIMETABLE', ''
       li
@@ -18,5 +19,4 @@ nav[role="navigation"]
         = link_to 'ACCESS&MAP', ''
       li
         = link_to 'SUPPORTERS', ''
-      li#right-end
-    #nav-right
+    #arrow-right

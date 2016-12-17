@@ -12,6 +12,10 @@
 }
 
 $base_font: Hind, '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', 'Noto Sans JP', 'Open Sans', 'Noto Sans', 'Slabo 13px', sans-serif;
+$pc_super_wide_min_width: 1400px;
+$pc_wide_min_width: 1250px;
+$pc_min_width: 1000px;
+$pc_sp_max_width: 999px;
 $sp_max_width: 768px;
 $color: #fff;
 $header_height: 46px;
@@ -53,6 +57,7 @@ header {
   padding: 0;
   background: #000;
   opacity: 0.8;
+  z-index: 10;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -119,6 +124,7 @@ nav {
   font-family: Hind;
   font-weight: 300;
   border-bottom: 1px solid #ddd;
+  z-index: 10;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -149,20 +155,21 @@ nav {
     #arrow-left {
       position: fixed;
       display: none;
-      top: $header_height;
+      top: calc( #{$header_height} + 5px );
       left: 0;
       width: 40px;
-      height: $nav-height;
+      height: 36px;
       pointer-events: auto;
       cursor: pointer;
-      background: #eee;
+      background: #fff;
+      border-right: 1px solid #ddd;
 
       &:before {
         content: '';
         display: inline-block;
         width: 10px;
         height: 10px;
-        margin-top: 17px;
+        margin-top: 12px;
         margin-left: 17px;
         border: solid #000;
         border-width: 0 0 1px 1px;
@@ -172,20 +179,21 @@ nav {
 
     #arrow-right {
       position: fixed;
-      top: $header_height;
+      top: calc( #{$header_height} + 5px );
       right: 0;
       width: 40px;
-      height: $nav-height;
+      height: 36px;
       pointer-events: auto;
       cursor: pointer;
-      background: #eee;
+      background: #fff;
+      border-left: 1px solid #ddd;
 
       &:before {
         content: '';
         display: inline-block;
         width: 10px;
         height: 10px;
-        margin-top: 17px;
+        margin-top: 12px;
         margin-left: 12px;
         border: solid #000;
         border-width: 1px 1px 0 0;
@@ -234,15 +242,109 @@ nav {
 *{box-sizing: border-box;}body{font-family:sans-serif;padding-top: 100px;width:100vw;background-color:#fff;}
 
 #container {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: Hind, YuGothic;
 
-  #main {
-    width: 90%;
+  #contents {
+    width: 980px;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 4px;
+    padding-bottom: 10px;
     background: #fff;
     border: 1px solid;
+
+    @media screen and ( min-width: $pc_super_wide_min_width ) {
+      width: 1300px;
+    }
+
+    @media screen and ( min-width: $pc_wide_min_width ) {
+      width: 1100px;
+    }
+
+    @media screen and ( max-width: $pc_sp_max_width ) {
+      width: 760px;
+    }
+
+    @media screen and ( max-width: $sp_max_width ) {
+      width: 100%;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 400px;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 10px;
+
+      .swiper-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+
+        .swiper-slide {
+          margin: 0;
+          padding: 0;
+
+          span {
+            display: inline-block;
+            width: 100%;
+            height: 400px;
+            background-color: #ccc;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            vertical-align: bottom;
+          }
+        }
+      }
+    }
+
+    #main {
+      float: left;
+      width: 660px;
+      margin: 0;
+      padding: 0;
+      border: 1px solid;
+
+      @media screen and ( min-width: $pc_super_wide_min_width ) {
+        width: 1000px;
+      }
+
+      @media screen and ( min-width: $pc_wide_min_width ) {
+        width: 900px;
+      }
+
+      @media screen and ( max-width: $pc_sp_max_width ) {
+        width: 760px;
+      }
+
+      @media screen and ( max-width: $sp_max_width ) {
+        float: none;
+        width: 100%;
+      }
+    }
+
+
+    #side-bar {
+      float: right;
+      width: 300px;
+      margin: 0 auto;
+      padding-top: 4px;
+      background: #fff;
+      border: 1px solid;
+
+      @media screen and ( max-width: $pc_sp_max_width ) {
+        width: 760px;
+      }
+
+      @media screen and ( max-width: $sp_max_width ) {
+        float: none;
+        width: 100%;
+      }
+    }
+
   }
+
+
 }

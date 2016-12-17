@@ -3,16 +3,23 @@ pageable: true
 per_page: 10
 ---
 
-article
-  #windowWidth
-  #navWidth
-  #pixcel
-  #offset
-  #result
+.swiper-container
+  .swiper-wrapper
+    .swiper-slide
+      span style="background-image: url( '/images/slide01.jpeg' )"
+    .swiper-slide
+      span style="background-image: url( '/images/slide02.jpeg' )"
+    .swiper-slide
+      span style="background-image: url( '/images/slide01.jpeg' )"
+  /
+    .swiper-pagination
+    .swiper-button-prev
+    .swiper-button-next
+    .swiper-scrollbar
 
-  | あいうえおテスト
+article#main
 
-  #position
+
 
   - if paginate && num_pages > 1
     p

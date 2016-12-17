@@ -9,17 +9,18 @@ html
     link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"
     link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet"
     script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
-    = stylesheet_link_tag :style
-    = javascript_include_tag :main
+    = stylesheet_link_tag 'style', 'swiper.min'
+    = javascript_include_tag 'main', 'swiper.min'
     title
       | Blog Title
       = ' - ' + current_article.title unless current_article.nil?
     = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
   body
-    article#container[role="main"]
+    #container[role="main"]
       = partial('modules/header')
       = partial('modules/nav')
-      #main[role="main"]
+      #contents[role="main"]
+        / スクロール画像
         = yield
         = partial('modules/sidebar')
       = partial('modules/footer')

@@ -1,8 +1,4 @@
 $( function() {
-  //////////////////////////
-  // メニューの両端に矢印表示 //
-  //////////////////////////
-
   var windowWidth = 0;
   var scrollCount = 0;
   var offsetLeft = 0;
@@ -10,6 +6,14 @@ $( function() {
   var fadeTime = 700;
   var resizeTimer = null;
   var scrollTimer = null;
+
+  var navMask = $( '#nav-mask' );
+  var arrowLeft = $( '#arrow-left' );
+  var arrowRight = $( '#arrow-right' );
+
+  //////////////////////////
+  // メニューの両端に矢印表示 //
+  //////////////////////////
 
   ///// 初期状態 /////
 
@@ -23,7 +27,7 @@ $( function() {
 
   // 横スクロールが起きない場合
   if( navWidth == windowWidth ) {
-    $( '#arrow-right' ).css( 'display', 'none' );
+    arrowRight.css( 'display', 'none' );
   }
 
   ///// ウィンドウリサイズ時 /////
@@ -42,17 +46,17 @@ $( function() {
 
       // 横スクロールが起きない場合
       if( navWidth == windowWidth ) {
-        $( '#arrow-left' ).css( 'display', 'none' );
-        $( '#arrow-right' ).css( 'display', 'none' );
+        arrowLeft.css( 'display', 'none' );
+        arrowRight.css( 'display', 'none' );
       } else if( navWidth > windowWidth ) {
-        $( '#arrow-right' ).css( 'display', 'block' );
+        arrowRight.css( 'display', 'block' );
       }
     }, 250 );
   });
 
   ///// 横スクロール時 /////
 
-  $( '#nav-mask' ).scroll( function() {
+  navMask.scroll( function() {
     clearTimeout( scrollTimer );
 
     scrollCount = $( this ).scrollLeft();
@@ -63,20 +67,20 @@ $( function() {
       // 右にスクロールした場合
       if( scrollCount > 0 ) {
         // 左の矢印を表示する
-        $( '#arrow-left' ).fadeIn( fadeTime );
+        arrowLeft.fadeIn( fadeTime );
       }
 
       // 左端に到達した場合
       if( scrollCount == 0 ) {
         // 左の矢印を非表示にする
-        $( '#arrow-left' ).fadeOut( fadeTime );
+        arrowLeft.fadeOut( fadeTime );
       }
 
       // 右端に到達した場合
       if( navWidth == windowWidth + scrollCount ) {
-        $( '#arrow-right' ).fadeOut( fadeTime );
+        arrowRight.fadeOut( fadeTime );
       } else {
-        $( '#arrow-right' ).fadeIn( fadeTime );
+        arrowRight.fadeIn( fadeTime );
       }
 
       $( '#pixcel' ).text( 'scrollCount: ' + scrollCount );
@@ -87,14 +91,13 @@ $( function() {
   ////////////////////////////////////
   // メニュー両端の矢印タップでスクロール //
   ////////////////////////////////////
-
-  $( '#arrow-left' ).click( function() {
-    $( '#nav-mask' ).animate( { scrollLeft: 0 }, 350, 'swing' );
+  arrowLeft.click( function() {
+    navMask.animate( { scrollLeft: 0 }, 350, 'swing' );
     return false;
   });
 
-  $( '#arrow-right' ).click( function() {
-    $( '#nav-mask' ).animate( { scrollLeft: navWidth }, 1000, 'swing' );
+  arrowRight.click( function() {
+    navMask.animate( { scrollLeft: navWidth }, 1000, 'swing' );
     return false;
   });
 
@@ -143,4 +146,22 @@ $( function() {
       });
     }
   );
+
+  //////////////////////////////////
+  // メニューにアニメーションで下線付加 //
+  //////////////////////////////////
+
+  var swiper = new Swiper( '.swiper-container', {
+        //pagination: '.swiper-pagination',
+        //nextButton: '.swiper-button-next',
+        //prevButton: '.swiper-button-prev',
+        //paginationClickable: true,
+        //spaceBetween: 30,
+        mode: 'horizontal',
+        centeredSlides: true,
+        speed: 1000, /* スライドが流れる時間 */
+        autoplay: 2500, /* スライドを表示する時間 */
+        autoplayDisableOnInteraction: false,
+        loop: true
+  });
 });

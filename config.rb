@@ -9,7 +9,8 @@ set :js_dir, "javascripts"
 set :images_dir, "images"
 
 # Blog settings
-set :site_url, 'http://coconofest.asia'
+#set :site_url, 'http://coconofest.asia'
+set :site_url, 'https://daisuke538.github.io/coconofest2017'
 set :site_title, 'cocono fest.'
 set :site_description, '福岡で開催されるフェス「cocono fest.」の公式WEBサイト'
 set :reverse_title, true
@@ -36,7 +37,6 @@ set :slim,
 #      "&" => {:tag => "input", :attr => "type"}
 #    }
 
-#page "404.html", :directory_index => false
 activate :directory_indexes
 
 # Per-page layout changes:
@@ -65,7 +65,7 @@ page "/tag.html", layout: "list_layout"
 
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
-  # blog.prefix = "blog"
+  #blog.prefix = "posts"
   blog.permalink = "{category}/{title}/index.html"
   # Matcher for blog source files
   blog.sources = "posts/{year}/{month}/{day}/{title}/index.html"

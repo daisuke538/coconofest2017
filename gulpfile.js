@@ -76,12 +76,18 @@ gulp.task( 'scss', function() {
       .pipe( gulp.dest( paths.css ) );
 });
 
+gulp.task( 'css', function() {
+  gulp.src( paths.scss + '**/*.css' )
+      .pipe( gulp.dest( paths.css ) );
+
+});
+
 gulp.task( 'images', function() {
   gulp.src( commonPath + 'images/**/*' ).pipe( gulp.dest( 'build/images' ) );
 });
 
 // buildタスクを実行すると、jsタスク、scssタスクが実行される
-gulp.task( 'build', ['js', 'scss', 'images'], function() {
+gulp.task( 'build', ['js', 'scss', 'css', 'images'], function() {
 });
 
 gulp.task( 'watch', function() {

@@ -1,0 +1,21 @@
+machine:
+  timezone: Asia/Tokyo
+  node:
+    version: 7.0.0
+
+dependencies:
+  cache_directories:
+    - node_modules
+  override:
+    - npm install
+
+pre:
+    - npm run build
+  override:
+    - npm test
+
+deployment:
+  publish:
+    branch: master
+    commands:
+      - ./release_push.sh

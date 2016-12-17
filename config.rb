@@ -155,5 +155,5 @@ end
 # デプロイ設定
 activate :deploy do |deploy|
   deploy.deploy_method = :git
-  deploy.branch = 'gh-pages'
+  deploy.branch = 'release'
 end

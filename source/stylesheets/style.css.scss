@@ -40,7 +40,7 @@ div, ul {
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-family: $base_font;
   background: #fff;
@@ -141,8 +141,8 @@ nav {
     #menu-under-bar {
       position: fixed;
       width: 75px;
-      height: 5px;
-      top: calc( #{$header_height} + #{$nav-height} - 5px );
+      height: 3px;
+      top: calc( #{$header_height} + #{$nav-height} - 4px );
       left: 0;
       background: #000;
       transition: all .3s ease;
@@ -323,8 +323,18 @@ nav {
         float: none;
         width: 100%;
       }
-    }
 
+      #top-news {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        margin: 0;
+        padding: 0;
+      }
+    }
 
     #side-bar {
       float: right;
@@ -347,4 +357,33 @@ nav {
   }
 
 
+}
+
+// 記事サムネのカードデザイン出力
+.article-card {
+  width: 210px;
+  height: auto;
+  //margin: 0 auto;
+  margin-bottom: 10px;
+  padding: 0;
+  //border: 1px solid;
+
+  .card-eyecatch {
+    margin: 0 auto;
+
+    img {
+      width: 210px;
+      height: 140px;
+    }
+  }
+
+  .card-text {
+    .category {
+
+    }
+
+    h3 {
+      margin: 0;
+    }
+  }
 }

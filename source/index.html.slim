@@ -19,8 +19,6 @@ per_page: 10
 
 article#main
 
-
-
   - if paginate && num_pages > 1
     p
       | Page
@@ -30,13 +28,21 @@ article#main
     - if prev_page
       p
         = link_to 'Previous page', prev_page
-  - page_articles.each_with_index do |article, i|
-    h2
-      = link_to article.title, article
-      span
-        = article.date.strftime('%b %e')
-    / = article.body
-  - if paginate
-    - if next_page
-      p
-        = link_to 'Next page', next_page
+  / 全記事を取得する
+  section#top-news
+    - page_articles.each_with_index do |article, i|
+      .article-card
+        .card-eyecatch
+          = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+        .card-text
+          .category
+            = article.data.category
+          h3
+            = link_to article.data.title_jp, article
+
+
+      / = article.body
+    - if paginate
+      - if next_page
+        p
+          = link_to 'Next page', next_page

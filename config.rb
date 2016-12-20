@@ -145,10 +145,13 @@ configure :build do
 
   # middleman build 実行後にタスクランナーを実行
   after_build do
-    system( 'gulp build' )
-
     # 画像圧縮
     system( 'gulp imagemin' )
+
+    # サムネイル生成
+    system( 'gulp image-resize' )
+
+    system( 'gulp build' )
   end
 end
 

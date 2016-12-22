@@ -20,7 +20,8 @@ html
       = partial('modules/header')
       = partial('modules/nav')
       #contents[role="main"]
-        / スクロール画像
-        = yield
-        = partial('modules/sidebar')
+        = partial('modules/swiper')
+        #wrapper
+          = yield
+          = partial('modules/sidebar')
       = partial('modules/footer')

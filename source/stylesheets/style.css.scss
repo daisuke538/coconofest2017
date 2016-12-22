@@ -18,6 +18,7 @@ $pc_min_width: 1000px;
 $pc_sp_max_width: 999px;
 $sp_max_width: 768px;
 $color: #fff;
+$default_font_color: #0C090D;
 $header_height: 46px;
 $nav-height: 46px;
 
@@ -43,6 +44,7 @@ body {
   margin: 0 auto;
   padding: 0;
   font-family: $base_font;
+  color: #0C090D;
   background: #fff;
   overflow-x: hidden;
 }
@@ -55,9 +57,10 @@ header {
   height: $header_height;
   margin: 0;
   padding: 0;
-  background: #000;
+  background: #0C090D;
   opacity: 0.8;
   z-index: 10;
+  color: $default_font_color;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -71,7 +74,7 @@ header {
 
     img {
       width: 26px;
-      height: 26;
+      height: 26px;
     }
   }
 
@@ -125,6 +128,7 @@ nav {
   font-weight: 300;
   border-bottom: 1px solid #ddd;
   z-index: 10;
+  color: $default_font_color;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -247,28 +251,12 @@ nav {
   font-family: Hind, YuGothic;
 
   #contents {
-    width: 980px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 4px;
     padding-bottom: 10px;
     background: #fff;
     border: 1px solid;
-
-    @media screen and ( min-width: $pc_super_wide_min_width ) {
-      width: 1300px;
-    }
-
-    @media screen and ( min-width: $pc_wide_min_width ) {
-      width: 1100px;
-    }
-
-    @media screen and ( max-width: $pc_sp_max_width ) {
-      width: 760px;
-    }
-
-    @media screen and ( max-width: $sp_max_width ) {
-      width: 100%;
-    }
 
     .swiper-container {
       width: 100%;
@@ -300,19 +288,17 @@ nav {
       }
     }
 
-    #main {
-      float: left;
-      width: 660px;
-      margin: 0;
+    #wrapper {
+      width: 980px;
+      margin: 0 auto;
       padding: 0;
-      border: 1px solid;
 
       @media screen and ( min-width: $pc_super_wide_min_width ) {
-        width: 1000px;
+        width: 1300px;
       }
 
       @media screen and ( min-width: $pc_wide_min_width ) {
-        width: 900px;
+        width: 1100px;
       }
 
       @media screen and ( max-width: $pc_sp_max_width ) {
@@ -320,40 +306,63 @@ nav {
       }
 
       @media screen and ( max-width: $sp_max_width ) {
-        float: none;
         width: 100%;
       }
-
-      #top-news {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-content: flex-start;
+      
+      #main {
+        float: left;
+        width: 660px;
         margin: 0;
         padding: 0;
+        border: 1px solid;
+
+        @media screen and ( min-width: $pc_super_wide_min_width ) {
+          width: 1000px;
+        }
+
+        @media screen and ( min-width: $pc_wide_min_width ) {
+          width: 900px;
+        }
+
+        @media screen and ( max-width: $pc_sp_max_width ) {
+          width: 760px;
+        }
+
+        @media screen and ( max-width: $sp_max_width ) {
+          float: none;
+          width: 100%;
+        }
+
+        #top-news {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          align-items: flex-start;
+          align-content: flex-start;
+          margin: 0;
+          padding: 0;
+        }
+      }
+
+      #side-bar {
+        float: right;
+        width: 300px;
+        margin: 0 auto;
+        padding-top: 4px;
+        background: #fff;
+        border: 1px solid;
+
+        @media screen and ( max-width: $pc_sp_max_width ) {
+          width: 760px;
+        }
+
+        @media screen and ( max-width: $sp_max_width ) {
+          float: none;
+          width: 100%;
+        }
       }
     }
-
-    #side-bar {
-      float: right;
-      width: 300px;
-      margin: 0 auto;
-      padding-top: 4px;
-      background: #fff;
-      border: 1px solid;
-
-      @media screen and ( max-width: $pc_sp_max_width ) {
-        width: 760px;
-      }
-
-      @media screen and ( max-width: $sp_max_width ) {
-        float: none;
-        width: 100%;
-      }
-    }
-
   }
 
 

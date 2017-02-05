@@ -1,8 +1,9 @@
 ---
 title: test
 date: 2016-12-11 13:34 UTC
-category: LINE-UP
-tags: ccnf2017, about a ROOM
+category: cocono fest. 2016
+tags: FOOD
+tags_jp: FOOD
 ---
 
 h1

@@ -1,23 +1,18 @@
 | <!doctype html>
 html
-  head
-    meta[charset="utf-8"]
-    meta[http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"]
-    meta[name="viewport" content="width=device-width, initial-scale=1"]
-    title
-      | Blog Title
-      = ' - ' + current_article.title unless current_article.nil?
-    = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
+  = partial('modules/head')
   body
-    #wrap[role="main"]
+    #container[role="main"]
       = partial('modules/header')
-      #main[role="main"]
-        | ARTICLE LAYOUT
-        article
-          - current_page.data.tags.split(', ').each do |tag, articles|
-            li
-              = link_to tag, tag_path(tag)
-          = yield
-        = partial('modules/sidebar')
-      = partial('modules/footer')
       = partial('modules/nav')
+      #contents[role="main"]
+        = partial('modules/breadcrumbs')
+        #wrapper
+          | ARTICLE LAYOUT
+          article
+            - current_page.data.tags.split(', ').each do |tag, articles|
+              li
+                = link_to tag, tag_path(tag)
+          = yield
+          = partial('modules/sidebar')
+      = partial('modules/footer')

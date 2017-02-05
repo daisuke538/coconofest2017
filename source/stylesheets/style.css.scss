@@ -11,14 +11,14 @@
   font-weight: bold;
 }
 
-$base_font: Hind, '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', 'Noto Sans JP', 'Open Sans', 'Noto Sans', 'Slabo 13px', sans-serif;
+$base_font: Hind, '游ゴシック体', YuGothic, '游ゴシック', 'Yu Gothic', 'Noto Sans JP', 'Open Sans', 'Noto Sans', Lato, 'Slabo 13px', sans-serif;
 $pc_super_wide_min_width: 1400px;
 $pc_wide_min_width: 1250px;
 $pc_min_width: 1000px;
 $pc_sp_max_width: 999px;
 $sp_max_width: 768px;
 $color: #fff;
-$default_font_color: #0C090D;
+$default_font_color: #383539;
 $header_height: 46px;
 $nav-height: 46px;
 
@@ -44,8 +44,8 @@ body {
   margin: 0 auto;
   padding: 0;
   font-family: $base_font;
-  color: #0C090D;
-  background: #fff;
+  color: $default_font_color;
+  background: #f5f5f5;
   overflow-x: hidden;
 }
 
@@ -58,7 +58,6 @@ header {
   margin: 0;
   padding: 0;
   background: #0C090D;
-  opacity: 0.8;
   z-index: 10;
   color: $default_font_color;
 
@@ -105,6 +104,65 @@ header {
   }
 }
 
+footer {
+  font-family: $base_font;
+  color: #fff;
+  text-align: center;
+  background: #53B3CB;
+
+  #page-top {
+    width: 100%;
+    height: 60px;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    background: #8ecddd;
+
+    img {
+      width: 20px;
+      height: auto;
+      margin: 0;
+      margin-top: 6px;
+      padding: 0;
+    }
+
+    span {
+      display: block;
+      width: 100px;
+      height: auto;
+      margin: 0 auto;
+      margin-top: -8px;
+      padding: 0;
+    }
+  }
+
+  address {
+    margin-top: 14px;
+    font-style: normal;
+
+    .mail-address {
+      width: 220px;
+      margin: 0 auto;
+      margin-top: 4px;
+      font-family: Hind;
+      font-weight: 200;
+      text-align: center;
+      //border: 1px solid;
+
+      a {
+        &:link {
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .copyright {
+    margin-top: 20px;
+    font-size: 0.8em;
+  }
+}
+
 @keyframes fadeIn {
     from{
         opacity: 0;
@@ -122,13 +180,13 @@ nav {
   height: $nav-height;
   margin: 0;
   padding: 0;
-  background: #fff;
+  //background: #0C090D;
+  background: #f7f7f7;
   overflow: hidden;
-  font-family: Hind;
+  font-family: $base_font;
   font-weight: 300;
-  border-bottom: 1px solid #ddd;
+  //border-bottom: 1px solid #ddd;
   z-index: 10;
-  color: $default_font_color;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -146,7 +204,7 @@ nav {
       position: fixed;
       width: 75px;
       height: 3px;
-      top: calc( #{$header_height} + #{$nav-height} - 4px );
+      top: calc( #{$header_height} + #{$nav-height} - 2px );
       left: 0;
       background: #000;
       transition: all .3s ease;
@@ -159,14 +217,14 @@ nav {
     #arrow-left {
       position: fixed;
       display: none;
-      top: calc( #{$header_height} + 5px );
-      left: 0;
+      top: calc( #{$header_height} + 7px );
+      left: -2px;
       width: 40px;
-      height: 36px;
+      height: 32px;
       pointer-events: auto;
       cursor: pointer;
-      background: #fff;
-      border-right: 1px solid #ddd;
+      background: #f7f7f7;
+      border-right: 1px solid #000;
 
       &:before {
         content: '';
@@ -183,14 +241,14 @@ nav {
 
     #arrow-right {
       position: fixed;
-      top: calc( #{$header_height} + 5px );
-      right: 0;
+      top: calc( #{$header_height} + 7px );
+      right: -2px;
       width: 40px;
-      height: 36px;
+      height: 32px;
       pointer-events: auto;
       cursor: pointer;
-      background: #fff;
-      border-left: 1px solid #ddd;
+      background: #f7f7f7;
+      border-left: 1px solid #000;
 
       &:before {
         content: '';
@@ -223,15 +281,11 @@ nav {
           display: block;
           padding: 0 1em;
           text-decoration: none;
-          color: #333;
           height: $nav-height;
           line-height: 3;
-
-          &:hover {
-            //border-bottom: 2.2px solid black;
-            //background-color: #f9f9f9;
-          }
-
+          color: #000;
+          font-weight: 500;
+          font-size: 1.0em;
         }
 
         .current {
@@ -245,22 +299,48 @@ nav {
 //codepen用 reset
 *{box-sizing: border-box;}body{font-family:sans-serif;padding-top: 100px;width:100vw;background-color:#fff;}
 
+.breadcrumbs {
+  display: inline-block;
+  padding: 10px 0 30px 0;
+  font-family: $base_font;
+  font-size: 0.8em;
+  color: $default_font_color;
+  //border: 1px solid;
+
+  a {
+    color: $default_font_color;
+    text-decoration: none;
+
+    &:link, &:hover, &:visited {
+      color: $default_font_color;
+    }
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  span {
+    margin: 0 10px;
+  }
+}
+
 #container {
   margin: 0 auto;
   padding: 0;
-  font-family: Hind, YuGothic;
+  font-family: $base_font;
+  color: $default_font_color;
+  background-color: #f7f7f7;
 
   #contents {
     width: 100%;
     margin: 0 auto;
-    margin-top: 4px;
+    margin-top: -8px;
     padding-bottom: 10px;
-    background: #fff;
-    border: 1px solid;
 
     .swiper-container {
       width: 100%;
-      height: 400px;
+      height: 500px;
       margin: 0;
       padding: 0;
       margin-bottom: 10px;
@@ -277,7 +357,7 @@ nav {
           span {
             display: inline-block;
             width: 100%;
-            height: 400px;
+            height: 500px;
             background-color: #ccc;
             background-position: center center;
             background-repeat: no-repeat;
@@ -294,7 +374,7 @@ nav {
       padding: 0;
 
       @media screen and ( min-width: $pc_super_wide_min_width ) {
-        width: 1300px;
+        //width: 1300px;
       }
 
       @media screen and ( min-width: $pc_wide_min_width ) {
@@ -309,19 +389,79 @@ nav {
         width: 100%;
       }
       
+      .category-headline, 
+      .tag-headline {
+        display: table;
+        margin: 0 auto;
+        margin-bottom: 30px;
+        font-size: 1.2em;
+        font-weight: 300;
+        letter-spacing: 1px;
+        text-align: center;
+        //background: #fff;
+
+        a {
+          display: block;
+          height: 100%;
+          padding: 7px 12px 7px 12px;
+          text-decoration: none;
+
+          &:hover {
+            opacity: 0.6;
+            transition: 0.5s;
+          }
+        }
+      }
+
+      .category-headline {
+        color: #53B3CB;
+        border: 1px solid #53B3CB;
+
+        a {
+          color: #53B3CB;
+        }
+      }
+
+      .tag-headline {
+        color: #383539;
+        border: 1px solid #383539;
+
+        a {
+          color: #383539;
+        }
+      }
+
+      h2 {
+        display: block;
+        width: 100%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        padding: 0;
+        font-weight: 500;
+        text-align: center;
+
+        span {
+          margin-left: 10px;
+          font-size: 0.7em;
+          font-weight: 300;
+        }
+      }
+
       #main {
         float: left;
         width: 660px;
         margin: 0;
         padding: 0;
-        border: 1px solid;
+        padding-top: 20px;
+        background: #eee;
+        //border: 1px solid;
 
         @media screen and ( min-width: $pc_super_wide_min_width ) {
-          width: 1000px;
+          //width: 900px;
         }
 
         @media screen and ( min-width: $pc_wide_min_width ) {
-          width: 900px;
+          width: 780px;
         }
 
         @media screen and ( max-width: $pc_sp_max_width ) {
@@ -333,15 +473,91 @@ nav {
           width: 100%;
         }
 
-        #top-news {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: space-between;
-          align-items: flex-start;
-          align-content: flex-start;
+        #pickup-article, 
+        #latest-article, 
+        #supporters {
+          h2 {
+            font-weight: 600;
+          }
+        }
+
+        #pickup-article, 
+        #latest-article {
+          width: 675px; // #mainのwidth + .article-cardのmargin-rightの値
           margin: 0;
           padding: 0;
+          margin-bottom: 30px;
+
+          @media screen and ( min-width: $pc_super_wide_min_width ) {
+            //width: 915px;
+          }
+
+          @media screen and ( min-width: $pc_wide_min_width ) {
+            width: 795px;
+          }
+
+          @media screen and ( max-width: $pc_sp_max_width ) {
+            width: 775px;
+          }
+
+          @media screen and ( max-width: $sp_max_width ) {
+            width: 100%;
+          }
+
+          #pickup-article-inner, 
+          #latest-article-inner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            margin: 0 auto;
+            padding: 0;
+            text-align: left;
+            overflow: hidden;
+
+            @media screen and ( max-width: $sp_max_width ) {
+              justify-content: center;
+              overflow: none;
+            }
+          }
+
+          
+        }
+
+        .load-more {
+          width: 200px;
+          height: 40px;
+          margin: 0 auto;
+          margin-bottom: 60px;
+          padding-top: 6px;
+          font-weight: 500;
+          font-size: 1.2em;
+          text-align: center;
+          background: #fff;
+          cursor: pointer;
+        }
+        
+        #supporters {
+          padding-bottom: 30px;
+
+          .supporter-image {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 0;
+            margin-bottom: 30px;
+            padding: 0;
+            
+            img {
+              width: 180px;
+              height: 180px;
+              margin: 0 5px;
+
+              @media screen and ( max-width: $sp_max_width ) {
+                width: 150px;
+                height: 150px;
+              }
+            }
+          }
         }
       }
 
@@ -364,18 +580,34 @@ nav {
       }
     }
   }
-
-
 }
 
 // 記事サムネのカードデザイン出力
 .article-card {
   width: 210px;
   height: auto;
-  //margin: 0 auto;
-  margin-bottom: 10px;
+  margin: 0 15px 16px 0; // このmargin-right + #mainのwidth = #latest-articleのwidth（#pickup-articleのwidth）
   padding: 0;
-  //border: 1px solid;
+  color: $default_font_color;
+  font-family: $base_font;
+  background: #fff;
+
+  @media screen and ( min-width: $pc_super_wide_min_width ) {
+  }
+
+  @media screen and ( min-width: $pc_wide_min_width ) {
+    width: 250px;
+  }
+
+  @media screen and ( max-width: $pc_sp_max_width ) {
+    width: 244px;
+    margin-right: 14px;
+  }
+
+  @media screen and ( max-width: $sp_max_width ) {
+    width: 45%;
+    margin: 0 6px 12px 6px; 
+  }
 
   .card-eyecatch {
     margin: 0 auto;
@@ -383,16 +615,136 @@ nav {
     img {
       width: 210px;
       height: 140px;
+
+      @media screen and ( min-width: $pc_super_wide_min_width ) {
+      }
+
+      @media screen and ( min-width: $pc_wide_min_width ) {
+        width: 250px;
+        height: calc( 250px / 1.5 );
+      }
+
+      @media screen and ( max-width: $pc_sp_max_width ) {
+        width: 244px;
+        height: calc( 244px / 1.5 );
+      }
+
+      @media screen and ( max-width: $sp_max_width ) {
+        width: 100%;
+        height: auto;
+      }
+    }
+
+    &:hover {
+      opacity: 0.8;
+      transition: 0.8s;
     }
   }
 
   .card-text {
-    .category {
+    margin: 0;
+    padding: 0 8px 8px 8px;
+    line-height: 20px;
+    font-family: Hind;
 
+    .card-text-top {
+      .card-category{
+        margin-bottom: 4px;
+
+        .article-category {
+          float: left;
+          display: inline-block;
+          padding: 2px 6px 0 6px;
+          text-align: center;
+          font-size: 0.65em;
+          color: #53B3CB;
+          text-decoration: none;
+          border: 1px solid #53B3CB;
+        }
+      }
+
+      .card-tags {
+        margin-bottom: 4px;
+
+        .article-tag {
+          float: left;
+          display: inline-block;
+          margin-right: 4px;
+          margin-bottom: 4px;
+          padding: 2px 6px 0 6px;
+          text-align: center;
+          font-size: 0.65em;
+          color: #383539;
+          text-decoration: none;
+          border: 1px solid #383539;
+        }
+      }
+
+      .article-date {
+        display: inline-block;
+        padding: 2px 0 1px 0;
+        font-size: 0.75em;
+        font-family: 'Noto Sans';
+        color: #999;
+      }
     }
 
     h3 {
-      margin: 0;
+      margin: 8px 0 0 0;
+      font-size: 0.85em;
+
+      a {
+        color: $default_font_color;
+
+        &:link {
+          text-decoration: none;
+          color: $default_font_color;
+        }
+      }
+    }
+  }
+}
+
+// ページネーション
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin: 0 auto;
+  margin-top: 30px;
+
+  .page-list {
+    width: 120px;
+    font-size: 0.8em;
+    text-align: center;
+    //border: 1px solid;
+  }
+
+  .page-prev, 
+  .page-next {
+    width: 70px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.7em;
+    font-weight: 200;
+    letter-spacing: 1px;
+    text-align: center;
+    background: #53B3CB;
+
+    a {
+      display: block;
+      width: 70px;
+      height: 100%;
+      padding: 5px 0 3px 0;
+      color: #fff;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.6;
+        transition: 0.5s;
+      }
     }
   }
 }

@@ -1,0 +1,25 @@
+.breadcrumbs
+  / トップページの場合、表示しない
+  - if current_page.url == '/'
+  / トップページ以外の場合
+  - else
+    = link_to 'HOME', '/index.html', class: 'bc-link'
+    span
+      | >
+    - if !current_page.data.category.nil?
+      = link_to "#{current_page.data.category}", "#{category_path(current_page.data.category)}", class: 'bc-link'
+      span
+        | >
+      - if !current_page.data.title_jp.nil?
+        = current_page.data.title_jp
+      - else
+        = current_page.data.title
+    - else
+      - if current_path.split('/')[0] == 'category'
+        = category
+      - if current_path.split('/')[0] == 'tags'
+        = tagname
+      - if current_path.split('/')[0] == 'date'
+        = year
+      - else
+        = current_page.data.title

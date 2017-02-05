@@ -1,20 +1,6 @@
 | <!doctype html>
 html
-  head
-    meta[charset="utf-8"]
-    meta[http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"]
-    meta[name="viewport" content="width=device-width, initial-scale=1"]
-    link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"
-    link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
-    link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"
-    link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet"
-    script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
-    = stylesheet_link_tag 'style', 'swiper.min'
-    = javascript_include_tag 'main', 'swiper.min'
-    title
-      | Blog Title
-      = ' - ' + current_article.title unless current_article.nil?
-    = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
+  = partial('modules/head')
   body
     #container[role="main"]
       = partial('modules/header')

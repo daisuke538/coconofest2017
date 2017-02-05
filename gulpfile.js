@@ -168,8 +168,8 @@ gulp.task( 'image-resize:eyecatch', function() {
 
   var resizeOptions = {
     // 記事のサムネイル画像サイズを設定
-    width       : 420,
-    height      : 280,
+    width       : 510,
+    height      : 340,
     gravity     : 'Center',
     crop        : true,
     upscale     : false,

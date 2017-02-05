@@ -164,4 +164,56 @@ $( function() {
         autoplayDisableOnInteraction: false,
         loop: true
   });
+
+  //////////////////////
+  // LATEST LOAD MORE //
+  //////////////////////
+  var loadMore = $( '.load-more' );
+  var articleCard = $( '#latest-article-inner .article-card' );
+  var nowViewNum = 3;
+  var maxViewNum = articleCard.length;
+  var addViewNum = 3;
+  var i = 0;
+
+  var screenWidth = window.innerWidth;
+  
+  if ( screenWidth < 760 ) {
+    nowViewNum = 4;
+    addViewNum = 4;
+  }
+  
+  // 初回の記事表示数を設定
+  articleCard.each( function() {
+    if ( i < nowViewNum ) {
+      $( this ).css( 'display', 'inline' );
+    } else {
+      $( this ).css( 'display', 'none' );
+    }
+
+    i++;
+  });
+  
+  // ボタンをクリックしたときの挙動
+  loadMore.click( function() {
+    nowViewNum += addViewNum;
+
+    if ( nowViewNum >= maxViewNum ) {
+      nowViewNum = maxViewNum;
+      loadMore.fadeOut( 500 );
+    }
+
+    $( '#latest-article-inner .article-card:lt(' + nowViewNum + ')' ).slideDown( 'slow' ).show();
+  });
+
+  //////////////
+  // PAGE TOP //
+  //////////////
+  var topBtn = $( '#page-top' );
+  //topBtn.hide();
+    
+  // ◇ボタンをクリックしたら、スクロールして上に戻る
+  topBtn.click( function(){
+    $( 'body,html' ).animate( { scrollTop: 0 },500 );
+    return false;
+  });
 });

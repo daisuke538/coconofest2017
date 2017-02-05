@@ -50,6 +50,7 @@ page "/sitemap.xml", layout: false
 page "/robots.txt", layout: false
 page "/category.html", layout: "list_layout"
 page "/tag.html", layout: "list_layout"
+page "/calendar.html", layout: "list_layout"
 # page "/calendar.html", layout: ""
 
 # With alternative layout
@@ -73,9 +74,9 @@ activate :blog do |blog|
   blog.layout = "layouts/article_layout"
   # blog.summary_separator = /(READMORE)/
   # blog.summary_length = 250
-  blog.year_link = "{year}/index.html"
-  blog.month_link = "{year}/{month}/index.html"
-  blog.day_link = "{year}/{month}/{day}/index.html"
+  blog.year_link = "date/{year}/index.html"
+  blog.month_link = "date/{year}/{month}/index.html"
+  blog.day_link = "date/{year}/{month}/{day}/index.html"
   blog.default_extension = ".md"
 
   blog.tag_template = "tag.html"
@@ -88,8 +89,8 @@ activate :blog do |blog|
 
   blog.custom_collections = {
     category: {
-      link: "/{category}/index.html",
-      template: "/category.html"
+      link: "category/{category}/index.html",
+      template: "category.html"
     }
   }
 end
@@ -111,10 +112,29 @@ helpers do
   def get_taxonomies( slug = 'category' )
     list = []
     blog.articles.select{ |i| i.data[slug].present? }.each do |article|
-      list = list.push article.data[slug]
+      if slug == 'tags_jp'
+        tag_jp_list = []
+        tag_jp_list = article.data.tags_jp.split(',')
+        
+        tag_list = []
+        tag_list = article.tags
+
+        tag_jp_list.each_with_index do |tag, j|
+          list = list.push tag+','+tag_list[j]
+        end
+      else
+        list = list.push article.data[slug]
+      end
     end
 
     return list.inject( Hash.new(0) ){|hash, a| hash[a] += 1; hash}
+  end
+
+  def get_split_tags( tag_en_jp, index )
+    list = []
+    list = tag_en_jp.split(',')
+
+    return list[index]
   end
 end
 

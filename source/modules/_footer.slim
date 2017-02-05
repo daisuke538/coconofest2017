@@ -1,3 +1,12 @@
 footer[role="contentinfo"]
-  h1
-    | footer
+  #page-top
+    = image_tag '/images/arrow_page_top.png'
+    span
+      | PAGE TOP
+  address
+    span
+      | メールでのお問い合わせ
+    .mail-address
+      = mail_to 'contact@coconofest.asia'
+  .copyright
+    | Copyright ©️ 2017 cocono fest. All Rights Reserved.

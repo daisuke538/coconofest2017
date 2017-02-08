@@ -5,6 +5,7 @@ title: 'HOME'
 ---
 
 article#main
+  / その年のcocono fest.に関する記事をピックアップ
   / 6記事まで表示するように
   section#pickup-article
     .category-headline
@@ -24,19 +25,68 @@ article#main
                   = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
                 .card-tags
                   - article.data.tags_jp.split(',').each_with_index do |tag_jp, j| 
-                    = link_to '#'+tag_jp, tag_path(article.tags[j]), :class => 'article-tag'
+                    = link_to '#'+tag_jp.strip, tag_path(article.tags[j]), :class => 'article-tag'
                 .clearfix
                 .article-date
                   = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
               h3
                 = link_to article.data.title_jp, article
 
+  / その年のcocono fest.を支援してくださる企業のロゴを掲載
+  #supporters
+    .headline
+      h2
+        | 協賛
+        span
+          | SPONSOR
+    br
+    .grade
+      h3
+        | GOLD
+    .supporter-image-large
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+    hr
+    .grade
+      h3
+        | BRONZE
+    .supporter-image-medium
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+    hr
+    .grade
+      h3
+        | COCONO
+    .supporter-image-small
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
+    br
+
+    .headline
+      h2
+        | 後援
+        span
+          | SUPPORTER
+    .supporter-image-large
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
+
   / 全記事を取得する
   section#latest-article
-    h2
-      | 最新記事
-      span
-        | LATEST ARTICLE
+    .headline
+      h2
+        | 最新記事
+        span
+          | LATEST ARTICLE
     #latest-article-inner
       - page_articles.each_with_index do |article, i|
         .article-card
@@ -48,7 +98,7 @@ article#main
                 = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
               .card-tags
                 - article.data.tags_jp.split(',').each_with_index do |tag_jp, j| 
-                    = link_to '#'+tag_jp, tag_path(article.tags[j]), :class => 'article-tag'
+                    = link_to '#'+tag_jp.strip, tag_path(article.tags[j]), :class => 'article-tag'
               .clearfix
               .article-date
                 = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
@@ -76,32 +126,5 @@ article#main
       .page-next
         - if next_page
           = link_to 'NEXT >', next_page
-
-  #supporters
-    h2
-      | 協賛
-      span
-        | SPONSOR
-    .supporter-image
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    
-    h2
-      | 後援
-      span
-        | SUPPORTER
-    .supporter-image
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
 
   .instagram-feed

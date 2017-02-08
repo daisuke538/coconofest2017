@@ -14,25 +14,34 @@ aside#side-bar
           / = article.summary
           span
             = article.date.strftime('%b %e')
-  h2
-    | Categories
-  ol
+  .headline
+    h2
+      | カテゴリー
+      span
+        | CATEGORIES
+  .category-list
     - get_taxonomies('category').each do |category, count|
-      li
-        = link_to "#{category} (#{count})", category_path(category)
-  h2
-    | Tags
-  ol
+      = link_to "#{category}", category_path(category), :class => 'category'
+
+  .headline
+    h2
+      | タグ
+      span
+        | TAGS
     /- blog.tags.each do |tag, articles|
       li
         = link_to "#{tag} (#{articles.size})", tag_path(tag)
+  .tags-list
     - get_taxonomies('tags_jp').each do |tag_jp, count|
-      li
-        = link_to "#{get_split_tags(tag_jp, 0)} (#{count})", tag_path(get_split_tags(tag_jp, 1))
-    
-  h2
-    | By Year
-  ol
+      = link_to '#'+"#{get_split_tags(tag_jp, 0)}", tag_path(get_split_tags(tag_jp, 1)), :class => 'tag'
+  .clearfix
+
+  .sidebar-banner
+
+  /.headline
+    h2
+      | By Year
+  /ol
     - blog.articles.group_by {|a| a.date.year}.each do |year, articles|
       li
         = link_to "#{year} (#{articles.size})", blog_year_path(year)

@@ -108,7 +108,7 @@ end
 # end
 
 helpers do
-  # カテゴリー一覧を取得するヘルパー
+  # カテゴリーやタグ（日本語）一覧を取得するヘルパー
   def get_taxonomies( slug = 'category' )
     list = []
     blog.articles.select{ |i| i.data[slug].present? }.each do |article|
@@ -134,7 +134,7 @@ helpers do
     list = []
     list = tag_en_jp.split(',')
 
-    return list[index]
+    return list[index].strip
   end
 end
 

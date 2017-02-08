@@ -46,6 +46,7 @@
     "uuid": "^3.0.1"
   },
   "dependencies": {
-    "gulp": "^3.9.1"
+    "gulp": "^3.9.1",
+    "social-share-js": "^1.0.4"
   }
 }

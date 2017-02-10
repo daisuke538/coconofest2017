@@ -3,7 +3,32 @@ pageable: true
 per_page: 8
 ---
 
-article
+article#main
+  / 全記事を取得する
+  section#latest-article
+    .tag-headline
+      = tagname
+        
+    #latest-article-inner
+      - page_articles.each_with_index do |article, i|
+        .article-card
+          .card-eyecatch
+            = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+          .card-text
+            .card-text-top
+              .card-category
+                = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+              .card-tags
+                - article.tags.each do |tag| 
+                  = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+              .clearfix
+              .article-date
+                = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+            h3
+              = link_to article.data.title_jp, article
+
+
+/article
   h1
     | Articles tagged '
     = tagname

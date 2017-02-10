@@ -11,7 +11,7 @@ article#main
     .category-headline
       - get_taxonomies('category').each do |category, count|
         - if category == 'cocono fest. 2017'
-          = link_to "#{category}", category_path(category)
+          = category
     
     #pickup-article-inner
       - page_articles.each_with_index do |article, i|
@@ -24,8 +24,8 @@ article#main
                 .card-category
                   = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
                 .card-tags
-                  - article.data.tags_jp.split(',').each_with_index do |tag_jp, j| 
-                    = link_to '#'+tag_jp.strip, tag_path(article.tags[j]), :class => 'article-tag'
+                  - article.tags.each_with_index do |tag, j| 
+                    = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
                 .clearfix
                 .article-date
                   = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
@@ -97,8 +97,8 @@ article#main
               .card-category
                 = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
               .card-tags
-                - article.data.tags_jp.split(',').each_with_index do |tag_jp, j| 
-                    = link_to '#'+tag_jp.strip, tag_path(article.tags[j]), :class => 'article-tag'
+                - article.tags.each_with_index do |tag, j| 
+                    = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
               .clearfix
               .article-date
                 = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')

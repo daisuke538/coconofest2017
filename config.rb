@@ -112,19 +112,7 @@ helpers do
   def get_taxonomies( slug = 'category' )
     list = []
     blog.articles.select{ |i| i.data[slug].present? }.each do |article|
-      if slug == 'tags_jp'
-        tag_jp_list = []
-        tag_jp_list = article.data.tags_jp.split(',')
-        
-        tag_list = []
-        tag_list = article.tags
-
-        tag_jp_list.each_with_index do |tag, j|
-          list = list.push tag+','+tag_list[j]
-        end
-      else
-        list = list.push article.data[slug]
-      end
+      list = list.push article.data[slug]
     end
 
     return list.inject( Hash.new(0) ){|hash, a| hash[a] += 1; hash}

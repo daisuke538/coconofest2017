@@ -4,5 +4,4 @@ title_jp: 'ニュースリリースニュースリリースニュースリリー
 date: 2016-12-14 02:33 UTC
 category: cocono fest. 2016
 tags: about a ROOM, MV
-tags_jp: about a ROOM, MV
 ---

@@ -14,15 +14,15 @@ html
               = image_tag "/posts/#{current_page.date.strftime('%Y')}/#{current_page.date.strftime('%m')}/#{current_page.date.strftime('%d')}/#{current_page.title}/images/top-thumbnail.jpg"
             .title
               h1
-                //= current_page.data.title_jp
-                | タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル
+                = current_page.data.title_jp
+                /| タイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトルタイトル
             .date
               = current_page.date.strftime('%Y') + '.' + current_page.date.strftime('%m') + '.' + current_page.date.strftime('%d')
             .category-list
               = link_to current_page.data.category, category_path(current_page.data.category), :class => 'category'
             .tags-list
-              - current_page.data.tags_jp.split(',').each do |tag_jp, articles|
-                = link_to '#'+"#{get_split_tags(tag_jp, 0)}", tag_path(get_split_tags(tag_jp, 0)), :class => 'tag'
+              - current_page.tags.each do |tag, article|
+                = link_to '#'+"#{tag}", tag_path(tag), :class => 'tag'
             .share-button
               / Twitter
               <div class="twitter-button" style="width:74px;height:22px;float:left;">

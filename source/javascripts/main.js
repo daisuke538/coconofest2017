@@ -170,7 +170,7 @@ $( function() {
   //////////////////////
   var loadMore = $( '.load-more' );
   var articleCard = $( '#latest-article-inner .article-card' );
-  var nowViewNum = 3;
+  var nowViewNum = 9;
   var maxViewNum = articleCard.length;
   var addViewNum = 3;
   var i = 0;
@@ -178,7 +178,7 @@ $( function() {
   var screenWidth = window.innerWidth;
   
   if ( screenWidth < 760 ) {
-    nowViewNum = 4;
+    nowViewNum = 6;
     addViewNum = 4;
   }
   
@@ -192,6 +192,10 @@ $( function() {
 
     i++;
   });
+
+  if ( nowViewNum >= maxViewNum ) {
+    loadMore.fadeOut( 500 );
+  }
   
   // ボタンをクリックしたときの挙動
   loadMore.click( function() {

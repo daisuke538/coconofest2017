@@ -170,7 +170,7 @@ $( function() {
   //////////////////////
   var loadMore = $( '.load-more' );
   var articleCard = $( '#latest-article-inner .article-card' );
-  var nowViewNum = 9;
+  var nowViewNum = 6;
   var maxViewNum = articleCard.length;
   var addViewNum = 3;
   var i = 0;

@@ -7,7 +7,7 @@ article#main
   / 全記事を取得する
   section#latest-article
     .tag-headline
-      = tagname
+      = '#' + tagname
         
     #latest-article-inner
       - page_articles.each_with_index do |article, i|

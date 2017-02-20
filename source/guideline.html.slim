@@ -3,33 +3,152 @@ directory_index: false
 title: 'GUIDELINE'
 ---
 
-article
-  #windowWidth
-  #navWidth
-  #pixcel
-  #offset
-  #result
+article#main
+  #guideline
+    .headline
+      h1
+        | GUIDELINE
 
-  | あいうえおテスト
-
-  #position
-
-  - if paginate && num_pages > 1
-    p
-      | Page
-      = page_number
-      |  of
-      = num_pages
-    - if prev_page
-      p
-        = link_to 'Previous page', prev_page
-  - page_articles.each_with_index do |article, i|
-    h2
-      = link_to article.title, article
-      span
-        = article.date.strftime('%b %e')
-    / = article.body
-  - if paginate
-    - if next_page
-      p
-        = link_to 'Next page', next_page
+    .subhead
+      h2
+        | メッセージ
+        span
+          | MESSAGE
+    .message
+      .theme
+        | 「ここから始まる、九州ミュージックムーブメント」
+      | "九州の音楽はこんなにもカッコいいんだ"ということを全国へ発信するために、九州内の音楽好きの有志が集まり、2015年からスタートしたフェスティバルです。
+      br
+      | 初回となる2015年には、cocono fest.の前身となるフェスティバル「
+      = link_to 'SEACOAST SOUNDS FUKUOKA', 'http://s-s.fukuoka.jp/', :target => '_blank'
+      | 」を開催しました。
+      br
+      | このフェスを通して、地元の音楽と気軽に出会える環境を、街全体でわが街の音楽をサポートする雰囲気を作っていきたいと思っています。
+      br
+      | そして、ここ九州から、全国で活躍するアーティストが生まれますように。
+    .subhead
+      h2
+        | 概要
+        span
+          | OVERVIEW
+    .overview
+      .block
+        .left-item
+          | 開催日
+        .right-item
+          | 2017年8月12日（土）
+        .clearfix
+      .block.del-border-top
+        .left-item
+          | 時間
+        .right-item
+          | 開場 11:00 / 開演 11:30 / 終演 20:00（予定）
+        .clearfix
+      .block.del-border-top
+        .left-item
+          | 会場
+        .right-item
+          = link_to 'さいとぴあ', 'http://www.saitopia.info/', :target => '_blank'
+          br
+          | （福岡県福岡市西区西都2-1-1 JR筑肥線「九大学研都市駅」前）
+        .clearfix
+      .block.del-border-top
+        .left-item
+          | 入場料
+        .right-item
+          | 多目的ホール: 有料
+          br
+          | 上記以外: 無料
+        .clearfix
+      .block.del-border-top
+        .left-item
+          | 主催
+        .right-item
+          | cocono fest. 実行委員会
+        .clearfix
+      /.block.del-border-top
+        .left-item
+          | 後援
+        .right-item
+          | 福岡市
+        .clearfix
+    .subhead
+      h2
+        | メンバー
+        span
+          | MEMBER
+    .member
+      .member-card
+        / 比率 3:2
+        .card-eyecatch
+          = image_tag '/images/member/komiya.jpg'
+        .card-text
+          .position
+            | 実行委員長
+          .name
+            | 小宮 大輔
+          .career
+            = link_to 'ロックの夜明け', 'http://rocknoyoake.com/', :target => '_blank'
+            br
+            = link_to 'TSUSHIMA BORDER ISLAND FES', 'http://tbif.asia/', :target => '_blank'
+            br
+            = link_to 'レーベル「カドデ」', 'http://www.kadode.co/', :target => '_blank'
+          .sns-box
+            .twitter
+              = image_tag '/images/member/twitter.png', class: 'sns-icon'
+              = link_to '@daisuke1120', 'https://twitter.com/daisuke1120', :target => '_blank', class: 'sns-account'
+            .facebook
+              = image_tag '/images/member/facebook.png', class: 'sns-icon'
+              = link_to 'd.komiya1120', 'https://www.facebook.com/d.komiya1120', :target => '_blank', class: 'sns-account'
+            .instagram
+              = image_tag '/images/member/instagram.png', class: 'sns-icon'
+              = link_to '@daisuke538', 'https://www.instagram.com/daisuke538/', :target => '_blank', class: 'sns-account'
+            .clearfix
+      .member-card
+        / 比率 3:2
+        .card-eyecatch
+          = image_tag '/images/member/komiya.jpg'
+        .card-text
+          .position
+            | 実行委員長
+          .name
+            | 小宮 大輔
+          .career
+            = link_to 'ロックの夜明け', '', :target => '_blank'
+            br
+            = link_to 'TSUSHIMA BORDER ISLAND FES', '', :target => '_blank'
+          .sns-box
+            .twitter
+              = image_tag '/images/member/twitter.png', class: 'sns-icon'
+              = link_to '@daisuke1120', 'https://twitter.com/daisuke1120', :target => '_blank', class: 'sns-account'
+            .facebook
+              = image_tag '/images/member/facebook.png', class: 'sns-icon'
+              = link_to 'd.komiya1120', 'https://www.facebook.com/d.komiya1120', :target => '_blank', class: 'sns-account'
+            .instagram
+              = image_tag '/images/member/instagram.png', class: 'sns-icon'
+              = link_to '@daisuke538', 'https://www.instagram.com/daisuke538/', :target => '_blank', class: 'sns-account'
+            .clearfix
+      .member-card
+        / 比率 3:2
+        .card-eyecatch
+          = image_tag '/images/member/komiya.jpg'
+        .card-text
+          .position
+            | 実行委員長
+          .name
+            | 小宮 大輔
+          .career
+            = link_to 'ロックの夜明け', '', :target => '_blank'
+            br
+            = link_to 'TSUSHIMA BORDER ISLAND FES', '', :target => '_blank'
+          .sns-box
+            .twitter
+              = image_tag '/images/member/twitter.png', class: 'sns-icon'
+              = link_to '@daisuke1120', 'https://twitter.com/daisuke1120', :target => '_blank', class: 'sns-account'
+            .facebook
+              = image_tag '/images/member/facebook.png', class: 'sns-icon'
+              = link_to 'd.komiya1120', 'https://www.facebook.com/d.komiya1120', :target => '_blank', class: 'sns-account'
+            .instagram
+              = image_tag '/images/member/instagram.png', class: 'sns-icon'
+              = link_to '@daisuke538', 'https://www.instagram.com/daisuke538/', :target => '_blank', class: 'sns-account'
+            .clearfix

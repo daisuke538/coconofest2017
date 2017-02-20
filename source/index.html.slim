@@ -9,11 +9,8 @@ article#main
   / 6記事まで表示するように
   section#pickup-article
     .category-headline
-      - get_taxonomies('category').each do |category, count|
-        - if category == 'cocono fest. 2017'
-          = category
-    
-    #pickup-article-inner
+      | cocono fest. 2017
+    #pickup-article-inner 
       - page_articles.each_with_index do |article, i|
         - if article.data.category == 'cocono fest. 2017' && i < 6
           .article-card
@@ -32,13 +29,45 @@ article#main
               h3
                 = link_to article.data.title_jp, article
 
-  / その年のcocono fest.を支援してくださる企業のロゴを掲載
-  #supporters
+  /section#sponsor-article
+    .tag-headline
+      | SPONSOR
+
+  / 全記事を取得する
+  section#latest-article
     .headline
-      h2
+      h1
+        | 最新記事
+        span
+          | LATEST ARTICLE
+    #latest-article-inner
+      - page_articles.each_with_index do |article, i|
+        .article-card
+          .card-eyecatch
+            = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+          .card-text
+            .card-text-top
+              .card-category
+                = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+              .card-tags
+                - article.tags.each_with_index do |tag, j| 
+                    = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+              .clearfix
+              .article-date
+                = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+            h3
+              = link_to article.data.title_jp, article
+
+  .load-more
+    | MORE
+    
+  / その年のcocono fest.を支援してくださる企業のロゴを掲載
+  #supporter-list
+    .headline
+      h1
         | 協賛
         span
-          | SPONSOR
+          | SUPPORTER
     br
     .grade
       h3
@@ -71,7 +100,7 @@ article#main
     br
 
     .headline
-      h2
+      h1
         | 後援
         span
           | SUPPORTER
@@ -80,35 +109,7 @@ article#main
       = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
 
-  / 全記事を取得する
-  section#latest-article
-    .headline
-      h2
-        | 最新記事
-        span
-          | LATEST ARTICLE
-    #latest-article-inner
-      - page_articles.each_with_index do |article, i|
-        .article-card
-          .card-eyecatch
-            = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
-          .card-text
-            .card-text-top
-              .card-category
-                = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
-              .card-tags
-                - article.tags.each_with_index do |tag, j| 
-                    = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
-              .clearfix
-              .article-date
-                = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
-            h3
-              = link_to article.data.title_jp, article
-
   .clearfix
-
-  .load-more
-    | MORE
 
   / ページネーション
   .pagination

@@ -15,7 +15,7 @@ aside#side-bar
           span
             = article.date.strftime('%b %e')
   .headline
-    h2
+    h1
       | カテゴリー
       span
         | CATEGORIES
@@ -23,8 +23,11 @@ aside#side-bar
     - get_taxonomies('category').each do |category, count|
       = link_to "#{category}", category_path(category), :class => 'category'
 
+  / PR広告（Google Adsenseなど）
+  .pr-sidebar
+    .pr-banner
   .headline
-    h2
+    h1
       | タグ
       span
         | TAGS
@@ -32,14 +35,18 @@ aside#side-bar
       li
         = link_to "#{tag} (#{articles.size})", tag_path(tag)
   .tags-list
-    - get_taxonomies('tags_jp').each do |tag_jp, count|
-      = link_to '#'+"#{get_split_tags(tag_jp, 0)}", tag_path(get_split_tags(tag_jp, 1)), :class => 'tag'
+     - blog.tags.each do |tag, articles| 
+       = link_to '#'+tag, tag_path(tag), :class => 'tag'
   .clearfix
 
   .sidebar-banner
 
+  / Facebook Widget
+
+  / Twitter Widget
+
   /.headline
-    h2
+    h1
       | By Year
   /ol
     - blog.articles.group_by {|a| a.date.year}.each do |year, articles|

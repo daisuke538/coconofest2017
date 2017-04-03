@@ -42,6 +42,43 @@ html
               <div class="line-button" style="width:86px;height:22px;float:left;"><span><script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script><script type="text/javascript">new media_line_me.LineButton({"pc":true,"lang":"ja","type":"a"});</script></span></div>
             .article-text
               = yield
-              .share-button-bottom
+            .share-button-bottom
+              / Twitter
+              <div class="twitter-button" style="width:74px;height:22px;float:left;">
+                <a href="https://twitter.com/share" class="twitter-share-button"{count} data-lang="ja" data-hashtags="ココノフェスト" data-dnt="true" data-count="none">ツイート</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+              </div>
+              / Facebook
+              <div class="facebook-button" style="width:160px;height:22px;float:left;"><iframe src="//www.facebook.com/v2.0/plugins/like.php?href=http%3A%2F%2Fcoconofest.asia#{current_page.url}&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=90&amp;appId=1815757718690727" scrolling="no" frameborder="0" style="border:none; overflow:hidden; height:90px;" allowTransparency="true"></iframe></div>
+              / はてなブックマーク
+              <div class="hatena-button" style="width:82px;height:22px;float:left;">
+                <a href="http://b.hatena.ne.jp/entry/" class="hatena-bookmark-button" data-hatena-bookmark-layout="simple-balloon" data-hatena-bookmark-lang="ja" title="このエントリーをはてなブックマークに追加"><img src="https://b.st-hatena.com/images/entry-button/button-only@2x.png" alt="このエントリーをはてなブックマークに追加" width="20" height="20" style="border: none;" /></a><script type="text/javascript" src="https://b.st-hatena.com/js/bookmark_button.js" charset="utf-8" async="async"></script>
+              </div>
+              / LINE
+              <div class="line-button" style="width:86px;height:22px;float:left;"><span><script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script><script type="text/javascript">new media_line_me.LineButton({"pc":true,"lang":"ja","type":"a"});</script></span></div>
+          
+            section#latest-article
+              .headline
+                h1
+                  | 最新記事
+                  span
+                    | LATEST ARTICLE
+              #latest-article-inner
+                - page_articles.each_with_index do |article, i|
+                  .article-card
+                    .card-eyecatch
+                      = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                    .card-text
+                      .card-text-top
+                        .card-category
+                          = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                        .card-tags
+                          - article.tags.each_with_index do |tag, j| 
+                              = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                        .clearfix
+                        .article-date
+                          = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                      h3
+                        = link_to article.data.title_jp, article
+
           = partial('modules/sidebar')
       = partial('modules/footer')

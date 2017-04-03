@@ -147,9 +147,9 @@ $( function() {
     }
   );
 
-  //////////////////////////////////
-  // メニューにアニメーションで下線付加 //
-  //////////////////////////////////
+  //////////////////////
+  // hero画像スライダー //
+  /////////////////////
 
   var swiper = new Swiper( '.swiper-container', {
         //pagination: '.swiper-pagination',
@@ -159,10 +159,10 @@ $( function() {
         //spaceBetween: 30,
         mode: 'horizontal',
         centeredSlides: true,
-        speed: 1000, /* スライドが流れる時間 */
-        autoplay: 2500, /* スライドを表示する時間 */
+        speed: 0, /* スライドが流れる時間 */
+        autoplay: 0, /* スライドを表示する時間 */
         autoplayDisableOnInteraction: false,
-        loop: true
+        loop: false
   });
 
   //////////////////////

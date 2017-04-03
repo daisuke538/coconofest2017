@@ -20,7 +20,7 @@ article#main
       | "九州の音楽はこんなにもカッコいいんだ"ということを全国へ発信するために、九州内の音楽好きの有志が集まり、2015年からスタートしたフェスティバルです。
       br
       | 初回となる2015年には、cocono fest.の前身となるフェスティバル「
-      = link_to 'SEACOAST SOUNDS FUKUOKA', 'http://s-s.fukuoka.jp/', :target => '_blank'
+      = link_to 'SEACOAST SOUNDS FUKUOKA', 'http://coconofest.asia/2015/', :target => '_blank'
       | 」を開催しました。
       br
       br
@@ -46,7 +46,7 @@ article#main
         .left-item
           | 時間
         .right-item
-          | 開場 11:00 / 開演 11:30 / 終演 20:00（予定）
+          | 開場 12:00 / 開演 12:30 / 終演 20:00（予定）
         .clearfix
       .block.del-border-top
         .left-item
@@ -60,9 +60,20 @@ article#main
         .left-item
           | 入場料
         .right-item
-          | 多目的ホール: 有料
+          | COCONO STAGE（多目的ホール）
+          .admission-fee
+            | 3,000円
+            br
+            | ※小学生以下無料
+            br
+            | ※中学・高校生は、当日受付で学生証をご提示いただくと1,000円キャッシュバックいたします
+          | 上記以外のエリア
+          .admission-fee
+            | 無料
+            br
+            | ※チケットは必要なく、どなたでもお楽しみいただけます
           br
-          | 上記以外: 無料
+          = link_to 'チケットを購入する', 'http://coconofest.asia/ticket'
         .clearfix
       .block.del-border-top
         .left-item
@@ -111,26 +122,24 @@ article#main
       .member-card
         / 比率 3:2
         .card-eyecatch
-          = image_tag '/images/member/komiya.jpg'
+          = image_tag '/images/member/higashi.jpg'
         .card-text
           .position
-            | 実行委員長
+            | 実行委員
           .name
-            | 小宮 大輔
+            | 東 賢次郎
           .career
-            = link_to 'ロックの夜明け', '', :target => '_blank'
-            br
-            = link_to 'TSUSHIMA BORDER ISLAND FES', '', :target => '_blank'
+            = link_to 'the gofuku town', 'http://thegofukutown.wix.com/the-gofuku-town', :target => '_blank'
           .sns-box
             .twitter
               = image_tag '/images/member/twitter.png', class: 'sns-icon'
-              = link_to '@daisuke1120', 'https://twitter.com/daisuke1120', :target => '_blank', class: 'sns-account'
+              = link_to '@hgs_knjr', 'https://twitter.com/hgs_knjr', :target => '_blank', class: 'sns-account'
             .facebook
               = image_tag '/images/member/facebook.png', class: 'sns-icon'
-              = link_to 'd.komiya1120', 'https://www.facebook.com/d.komiya1120', :target => '_blank', class: 'sns-account'
+              = link_to '東 賢次郎', 'https://www.facebook.com/profile.php?id=100002928376075&fref=ts', :target => '_blank', class: 'sns-account'
             .instagram
               = image_tag '/images/member/instagram.png', class: 'sns-icon'
-              = link_to '@daisuke538', 'https://www.instagram.com/daisuke538/', :target => '_blank', class: 'sns-account'
+              = link_to '@hgs_knjr', 'https://www.instagram.com/hgs_knjr', :target => '_blank', class: 'sns-account'
             .clearfix
       .member-card
         / 比率 3:2

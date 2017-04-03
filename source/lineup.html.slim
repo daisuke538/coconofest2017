@@ -10,6 +10,10 @@ article#main
         | LINE-UP
     .stage-name
       | COCONO STAGE
+    span
+      | ※入場には、COCONO STAGEチケットが必要です
+    .stage-description
+      | 今の九州を代表するアーティスト、そして全国やアジアから招いた素晴らしいゲストが競演し、プレミアムな音楽空間を生み出すステージ
     .artist-list
       .artist-card
         / 比率 3:2（750px500px）
@@ -20,10 +24,14 @@ article#main
       .artist-card
         / 比率 3:2
         .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/comingsoon.jpg'}", '#'
+      /.artist-card
+        / 比率 3:2
+        .card-eyecatch
           = link_to "#{image_tag '/images/lineup/the-folkees.jpg'}", 'http://modpop.wixsite.com/thefolkees', :target => '_blank'
         .name
           | The Folkees
-      .artist-card
+      /.artist-card
         / 比率 3:2
         .card-eyecatch
           = link_to "#{image_tag '/images/lineup/iriko.jpg'}", 'http://big-s-58-mos13.wixsite.com/iriko', :target => '_blank'
@@ -31,19 +39,17 @@ article#main
           | IRIKO
     .stage-name
       | KYUSHU POP UP FLOOR
+    span
+      | ※チケット不要でどなたでも無料でご覧いただけます
+    .stage-description
+      | 全国へ飛び出すような才能を秘めた、新進気鋭な九州アーティストの音やパフォーマンスがぶつかり合うステージ
     .artist-list
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/the-gofuku-town.jpg'}", 'http://thegofukutown.wixsite.com/the-gofuku-town', :target => '_blank'
+          = link_to "#{image_tag '/images/lineup/alter-eago.jpg'}", 'http://altereago.uh-oh.jp/', :target => '_blank'
         .name
-          | the gofuku town
-      .artist-card
-        / 比率 3:2
-        .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/num-contena.jpg'}", 'http://numcontena.tumblr.com/', :target => '_blank'
-        .name
-          | Num Contena
+          | ALTER EAGO
       .artist-card
         / 比率 3:2
         .card-eyecatch
@@ -53,17 +59,17 @@ article#main
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/matikaze.jpg'}", 'https://soundcloud.com/matikaze', :target => '_blank'
+          = link_to "#{image_tag '/images/lineup/the-gofuku-town.jpg'}", 'http://thegofukutown.wixsite.com/the-gofuku-town', :target => '_blank'
         .name
-          | MATIKAZE
-    .stage-name
-      | ITO GARDEN
-    .artist-list
+          | the gofuku town
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/predawn.jpg'}", 'http://www.predawnmusic.com/', :target => '_blank'
+          = link_to "#{image_tag '/images/lineup/comingsoon.jpg'}", '#'
+      /.artist-card
+        / 比率 3:2
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/num-contena.jpg'}", 'http://numcontena.tumblr.com/', :target => '_blank'
         .name
-          | Predawn
-      
+          | Num Contena
           

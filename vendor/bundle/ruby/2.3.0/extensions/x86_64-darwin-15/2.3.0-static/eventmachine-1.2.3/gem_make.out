@@ -1,0 +1,20 @@
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.2.3/ext/fastfilereader
+/Users/komiya-daisuke/.rbenv/versions/2.3.1/bin/ruby -r ./siteconf20170403-40549-1covcd8.rb extconf.rb
+creating Makefile
+
+To see why this extension failed to compile, please check the mkmf.log which can be found here:
+
+  /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/extensions/x86_64-darwin-15/2.3.0-static/eventmachine-1.2.3/mkmf.log
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR=" clean
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR="
+compiling mapper.cpp
+compiling rubymain.cpp
+linking shared-object fastfilereaderext.bundle
+
+current directory: /Users/komiya-daisuke/Documents/website/coconofest2017/vendor/bundle/ruby/2.3.0/gems/eventmachine-1.2.3/ext/fastfilereader
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 fastfilereaderext.bundle ./.gem.20170403-40549-1xkpcya

@@ -56,7 +56,7 @@ header {
   margin: 0;
   padding: 0;
   background: #0C090D;
-  z-index: 10;
+  z-index: 100;
   color: $default_font_color;
 
   @media screen and ( max-width: $sp_max_width ) {
@@ -193,7 +193,7 @@ nav {
   font-family: $base_font;
   font-weight: 300;
   //border-bottom: 1px solid #ddd;
-  z-index: 10;
+  z-index: 100;
 
   @media screen and ( max-width: $sp_max_width ) {
 
@@ -232,6 +232,7 @@ nav {
       cursor: pointer;
       background: #f7f7f7;
       border-right: 1px solid #000;
+      z-index: 110;
 
       &:before {
         content: '';
@@ -256,6 +257,7 @@ nav {
       cursor: pointer;
       background: #f7f7f7;
       border-left: 1px solid #000;
+      z-index: 110;
 
       &:before {
         content: '';
@@ -279,6 +281,12 @@ nav {
 
       @media screen and ( max-width: $sp_max_width ) {
 
+      }
+      
+      .holding-year {
+        margin: 0 17px 0 14px;
+        font-size: 1.1em;
+        font-weight: 400;
       }
 
       li {
@@ -385,6 +393,59 @@ nav {
       }
     }
 
+    #title-wrapper {
+      position: absolute;
+      top: 120px;
+      left: 50%;
+      transform: translate( -50%, 0 );
+      z-index: 10;
+
+      @media screen and ( max-width: $sp_max_width ) {
+        left: 50%;
+        transform: translate( -50%, 0 );
+        width: 88%;
+        margin: 0 auto;
+      }
+
+      .title-logo {
+        text-align: center;
+
+        img {
+          width: 460px;
+          height: auto;
+          margin: 0 auto;
+
+          @media screen and ( max-width: $sp_max_width ) {
+            width: 280px;
+          }
+        }
+      }
+
+      .title-overview {
+        margin-top: 30px;
+        font-size: 1.1em;
+        font-weight: 500;
+        color: $default_font_color;
+        text-align: center;
+
+        @media screen and ( max-width: $sp_max_width ) {
+          font-size: 1.0em;
+        }
+      }
+
+      .title-theme {
+        margin-top: 48px;
+        font-size: 1.5em;
+        font-weight: 600;
+        color: #fff;
+        text-align: center;
+
+        @media screen and ( max-width: $sp_max_width ) {
+          font-size: 1.2em;
+        }
+      }
+    }
+
     #wrapper {
       width: 980px;
       margin: 0 auto;
@@ -487,70 +548,6 @@ nav {
           float: none;
           width: 100%;
         }
-
-        #pickup-article, 
-        #latest-article, 
-        #supporter-list {
-          h2 {
-            font-weight: 600;
-          }
-        }
-
-        #pickup-article, 
-        #latest-article {
-          width: 675px; // #mainのwidth + .article-cardのmargin-rightの値
-          margin: 0;
-          padding: 0;
-          margin-bottom: 30px;
-
-          @media screen and ( min-width: $pc_super_wide_min_width ) {
-            //width: 915px;
-          }
-
-          @media screen and ( min-width: $pc_wide_min_width ) {
-            width: 795px;
-          }
-
-          @media screen and ( max-width: $pc_sp_max_width ) {
-            width: 775px;
-          }
-
-          @media screen and ( max-width: $sp_max_width ) {
-            width: 100%;
-          }
-
-          #pickup-article-inner, 
-          #latest-article-inner {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            margin: 0 auto;
-            padding: 0;
-            text-align: left;
-            overflow: hidden;
-
-            @media screen and ( max-width: $sp_max_width ) {
-              justify-content: center;
-              overflow: none;
-            }
-          }
-
-          
-        }
-
-        .load-more {
-          width: 270px;
-          height: 47px;
-          margin: 0 auto;
-          margin-bottom: 60px;
-          padding-top: 8px;
-          font-weight: 500;
-          font-size: 1.2em;
-          text-align: center;
-          background: #fff;
-          cursor: pointer;
-          border: 1px solid #000;
-        }
         
         #supporter-list {
           //padding-bottom: 10px;
@@ -628,18 +625,79 @@ nav {
           }
         }
       }
-      
+
+      #pickup-article, 
+      #latest-article,
+      #related-article {
+        width: 675px; // #mainのwidth + .article-cardのmargin-rightの値
+        margin: 0;
+        padding: 0;
+        margin-bottom: 30px;
+        text-align: center;
+
+        @media screen and ( min-width: $pc_super_wide_min_width ) {
+          //width: 915px;
+        }
+
+        @media screen and ( min-width: $pc_wide_min_width ) {
+          width: 795px;
+        }
+
+        @media screen and ( max-width: $pc_sp_max_width ) {
+          width: 775px;
+        }
+
+        @media screen and ( max-width: $sp_max_width ) {
+          width: 100%;
+        }
+
+        h2 {
+          font-weight: 600;
+        }
+
+        #pickup-article-inner, 
+        #latest-article-inner,
+        #related-article-inner {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          margin: 0 auto;
+          padding: 0;
+          text-align: left;
+          overflow: hidden;
+
+          @media screen and ( max-width: $sp_max_width ) {
+            justify-content: center;
+            overflow: none;
+          }
+        }
+      }
+
+      .load-more {
+        width: 270px;
+        height: 47px;
+        margin: 0 auto;
+        margin-bottom: 60px;
+        padding-top: 8px;
+        font-weight: 500;
+        font-size: 1.2em;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+        border: 1px solid #000;
+      }
+
       /////////////////
       // fixed pages //
       /////////////////
       #guideline, 
       #lineup, 
       #timetable, 
-      #tickets, 
+      #ticket, 
       #shops, 
       #map, 
       #access, 
-      #supporters {
+      #supporter {
         width: 100%;
         margin-top: -10px;
 
@@ -717,7 +775,7 @@ nav {
 
             .left-item {
               float: left;
-              width: 190px;
+              width: 140px;
               margin-left: 10px;
               font-weight: 700;
 
@@ -727,12 +785,17 @@ nav {
             }
 
             .right-item {
-              float: left;
+              float: right;
+              width: 70%;
 
               @media screen and ( max-width: $sp_max_width ) {
                 //float: right;
-                width: 220px;
+                //width: 220px;
               }
+            }
+
+            .admission-fee {
+              margin-left: 20pt;
             }
           }
 
@@ -854,13 +917,28 @@ nav {
       #lineup {
         .stage-name {
           width: 100%;
-          margin-bottom: 30px;
+          margin-bottom: 20px;
           padding: 14px 0 14px 0;
           color: #fff;
           font-family: 'Lato';
           font-size: 1.1em;
           font-weight: 100;
           background: #000;
+        }
+
+        span {
+          display: block;
+          margin: 0;
+          margin-bottom: 20px;
+          font-size: 0.9em;
+          color: #ED5578;
+          text-align: left;
+        }
+
+        .stage-description {
+          margin-bottom: 20px;
+          font-weight: 600;
+          text-align: left;
         }
 
         .artist-list {
@@ -894,13 +972,65 @@ nav {
 
           .artist-card {
             .name {
-              font-size: 1.2em;
+              font-size: 1.1em;
               font-weight: 500;
 
               @media screen and ( max-width: $sp_max_width ) {
                 font-size: 1.0em;
               }
             }
+          }
+        }
+      }
+
+      #ticket {
+        .ticket-type, 
+        .buy-ticket {
+          margin-bottom: 70px;
+        }
+
+        .ticket-type,
+        .buy-ticket {
+          .by-area,
+          .ticket-seller {
+            margin-top: 14px;
+            margin-bottom: 14px;
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: 600;
+          }
+
+          .block {
+            padding: 18px 0;
+            font-size: 0.9em;
+            text-align: left;
+            border-top: 1px solid;
+            border-bottom: 1px solid;
+
+            .left-item {
+              float: left;
+              width: 180px;
+              margin-left: 10px;
+              font-weight: 700;
+
+              @media screen and ( max-width: $sp_max_width ) {
+                width: 80px;
+              }
+            }
+
+            .right-item {
+              float: right;
+              width: 70%;
+              
+              @media screen and ( max-width: $sp_max_width ) {
+                float: right;
+                //width: 234px;
+              }
+            }
+          }
+
+          .del-border-top {
+            border-top: none;
           }
         }
       }
@@ -957,6 +1087,80 @@ nav {
         }
       }
 
+      #supporter {
+        .supporter-image-large, 
+        .supporter-image-medium, 
+        .supporter-image-small {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin: 0;
+          margin-bottom: 30px;
+          padding: 0;
+        } 
+          
+        hr {
+          width: 90%;
+          margin-bottom: 14px;
+        }
+
+        .grade {
+          display: inline-block;
+          margin: 0 auto;
+          margin-bottom: 30px;
+          border-bottom: 2px solid;
+
+          h3 {
+            margin: 0;
+            margin-bottom: 6px;
+            padding: 0;
+            font-size: 1.2em;
+            font-weight: 500;
+          }
+        }
+
+        // DIAMOND,PLATINUM,GOLD
+        .supporter-image-large {
+          img {
+            width: 150px;
+            height: 150px;
+            margin: 0 5px;
+
+            @media screen and ( max-width: $sp_max_width ) {
+              width: 120px;
+              height: 120px;
+            }
+          }
+        }
+
+        // SILVER,BRONZE
+        .supporter-image-medium {
+          img {
+            width: 120px;
+            height: 120px;
+            margin: 0 5px;
+
+            @media screen and ( max-width: $sp_max_width ) {
+              width: 90px;
+              height: 90px;
+            }
+          }
+        }
+
+        .supporter-image-small {  
+          img {
+            width: 90px;
+            height: 90px;
+            margin: 0 5px;
+
+            @media screen and ( max-width: $sp_max_width ) {
+              width: 60px;
+              height: 60px;
+            }
+          }
+        }
+      }
+
       /////////////
       // article //
       /////////////
@@ -964,7 +1168,6 @@ nav {
         float: left;
         width: 660px;
         margin: 0;
-        margin-bottom: 20px;
         padding: 0;
         text-align: center;
         //overflow: hidden;
@@ -1097,7 +1300,8 @@ nav {
           }
         }
 
-        .share-button {
+        .share-button,
+        .share-button-bottom {
           display: flex;
           flex-wrap: wrap;
           justify-content: center;
@@ -1139,10 +1343,16 @@ nav {
           }
         }
 
+        .share-button-bottom {
+          margin-top: 0;
+          margin-bottom: 18px;
+        }
+
         .article-text {
           //width: 100%;
           margin: 0;
-          padding: 10px 40px 30px 40px;
+          margin-bottom: 30px;
+          padding: 10px 40px 20px 40px;
           font-size: 0.95em;
           line-height: 2;
           text-align: left;
@@ -1194,6 +1404,26 @@ nav {
             background: #fff;
             border: 1px solid #ccc;
           }
+        }
+
+        .article-next-page {
+          display: block;
+          margin-top: 10px;
+          font-size: 1.2em;
+          color: #53B3CB !important;
+          text-align: center;
+
+          &:link, &:hover, &:active, &:visited {
+            color: #53B3CB !important;
+          }
+        }
+
+        .mb-30 {
+          margin-bottom: 30px;
+        }
+
+        .mb-50 {
+          margin-bottom: 50px;
         }
       }
       
@@ -1263,6 +1493,12 @@ nav {
             border: 1px solid #383539;
           }
         }
+      }
+
+      .twitter-widget {
+        width: 88%;
+        margin: 0 auto;
+        margin-top: 10px;
       }
     }
   }

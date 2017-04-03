@@ -3,7 +3,7 @@ aside#side-bar
     h2
       | 人気の記事
       span
-        | RANKING
+        | POPULAR ARTICLE
 
     ol
       - blog.articles[0...10].each do |article|
@@ -14,11 +14,17 @@ aside#side-bar
           / = article.summary
           span
             = article.date.strftime('%b %e')
+  /
+    h2
+      | 人気のタグ
+      span
+        | POPULAR TAG
+
   .headline
     h1
       | カテゴリー
       span
-        | CATEGORIES
+        | CATEGORY
   .category-list
     - get_taxonomies('category').each do |category, count|
       = link_to "#{category}", category_path(category), :class => 'category'
@@ -30,13 +36,14 @@ aside#side-bar
     h1
       | タグ
       span
-        | TAGS
+        | TAG
     /- blog.tags.each do |tag, articles|
       li
         = link_to "#{tag} (#{articles.size})", tag_path(tag)
   .tags-list
-     - blog.tags.each do |tag, articles| 
-       = link_to '#'+tag, tag_path(tag), :class => 'tag'
+     - blog.tags.sort.each do |tag, articles| 
+       - unless tag.nil?
+         = link_to '#'+tag, tag_path(tag), :class => 'tag'
   .clearfix
 
   .sidebar-banner
@@ -44,6 +51,11 @@ aside#side-bar
   / Facebook Widget
 
   / Twitter Widget
+  .twitter-widget
+    <a class="twitter-timeline"  href="https://twitter.com/coconofest" data-widget-id="518629046691692544">@coconofestさんのツイート</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+          
+          
 
   /.headline
     h1

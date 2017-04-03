@@ -1,4 +1,4 @@
-head
+head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"
   meta[charset="utf-8"]
   meta[http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"]
   meta[name="viewport" content="width=device-width, initial-scale=1"]
@@ -12,7 +12,8 @@ head
   script src="https://stackpile.io/stack_161750.js" async="async"
   = stylesheet_link_tag 'style', 'swiper.min'
   = javascript_include_tag 'main', 'swiper.min'
+  / OGP
   title
-    | Blog Title
-    = ' - ' + current_article.title unless current_article.nil?
+    | cocono fest.
+    = '｜' + current_article.data.title_jp unless current_article.nil?
   = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"

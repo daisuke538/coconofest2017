@@ -1,7 +1,8 @@
 ---
 //pageable: true
 //per_page: 3
-title: 'HOME'
+title: 'ここから始まる、九州ミュージックムーブメント'
+og-type: 'website'
 ---
 
 article#main
@@ -34,8 +35,24 @@ article#main
       | SPONSOR
 
   / オススメMV
-  section#featured-video
+  /section#featured-video
+    .headline
+      h1
+        | オススメ映像
+        span
+          | FEATURED VIDEO
+    #featured-video-inner
 
+  / 注目の記事
+  /section#featured-video
+    .headline
+      h1
+        | 注目の記事
+        span
+          | FEATURED ARTICLE
+  / インタビュータグ
+  / レビュータグ
+  
   / 全記事を取得する
   section#latest-article
     .headline
@@ -111,8 +128,9 @@ article#main
       = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-
   .clearfix
+
+  / PR広告（Google Adsenseなど）
 
   / ページネーション
   .pagination
@@ -131,5 +149,8 @@ article#main
         - if next_page
           = link_to 'NEXT >', next_page
 
-  .instagram-feed
+  /#instafeed-outer
+    #instafeed
+    /button id="insta-load-more" type="button"
+     | MORE
   

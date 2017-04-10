@@ -45,17 +45,28 @@ aside#side-bar
        - unless tag.nil?
          = link_to '#'+tag, tag_path(tag), :class => 'tag'
   .clearfix
-
+  
+  / PR広告（Google Adsenseなど）
   .sidebar-banner
 
-  / Facebook Widget
 
   / Twitter Widget
+  .headline
+    h1
+      | Twitter
   .twitter-widget
     <a class="twitter-timeline"  href="https://twitter.com/coconofest" data-widget-id="518629046691692544">@coconofestさんのツイート</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
           
-          
+  / Instagram Feed
+  .headline
+    h1
+      | Instagram
+  .instagram-feed
+    .instagram-feed-inner
+      <!-- SnapWidget -->
+      <script src="https://snapwidget.com/js/snapwidget.js"></script>
+      <iframe src="https://snapwidget.com/embed/361823" class="snapwidget-widget" allowTransparency="true" frameborder="0" scrolling="no" style="border:none; overflow:hidden; width:100%; "></iframe>
 
   /.headline
     h1

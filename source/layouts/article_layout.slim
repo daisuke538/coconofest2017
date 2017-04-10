@@ -23,7 +23,9 @@ html
             .tags-list
               - current_page.tags.each do |tag, article|
                 = link_to '#'+"#{tag}", tag_path(tag), :class => 'tag'
+                
             / PR広告（Google Adsenseなど）
+
             .pr-article
               .pr-banner-left
               .pr-banner-right
@@ -55,7 +57,9 @@ html
               </div>
               / LINE
               <div class="line-button" style="width:86px;height:22px;float:left;"><span><script type="text/javascript" src="//media.line.me/js/line-button.js?v=20140411" ></script><script type="text/javascript">new media_line_me.LineButton({"pc":true,"lang":"ja","type":"a"});</script></span></div>
-          
+            
+            / PR広告（Google Adsenseなど）
+
             section#latest-article
               .headline
                 h1
@@ -79,6 +83,8 @@ html
                           = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
                       h3
                         = link_to article.data.title_jp, article
+            .load-more
+              | MORE
 
           = partial('modules/sidebar')
       = partial('modules/footer')

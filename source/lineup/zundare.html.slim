@@ -1,0 +1,89 @@
+---
+//pageable: true
+//per_page: 3
+title: 'about a ROOM'
+og-type: 'website'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | ずんだれ
+    .photo
+      = image_tag '/images/lineup/zundare.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 長崎県にある国境の島・対馬で活動する、2MC/1SINGERのHIP-POPユニット。2014年7月結成。
+      br
+      | 2015年7月に1st Albumをリリースしたことをきっかけに、島内で開催されるイベントの大半に出演を果たし、手売りで500枚以上を売り上げる。
+      br
+      | 同アルバムに収録されている卒業をテーマにした曲「Kizuna」は、Web上で100万回再生を突破し、対馬の学生だけではなく、全国の学生にとっての大切な卒業ソングになりつつある。
+      br
+      | 2016年12月には1st Single「ケンガイ」をリリース。この珠玉の遠恋ソングは、現在までにWeb上で50万回以上の再生を記録。また、同月に開催した自主企画「ずんだれとライブ」では、対馬の10代20代の人口約4,800人に対して600人を動員。
+      br
+      | 世代を超えて老若男女に愛される彼らから目が離せない。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'https://www.facebook.com/zundare.tushima/', 'https://www.facebook.com/zundare.tushima/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@zundareofficial', 'https://twitter.com/zundareofficial', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 例えば、学校の卒業式。クリスマス。夏の海。
+      br
+      | どの季節どのシーンを切り取っても、そこに寄り添うのは彼らの音楽。
+      br
+      | 老若男女の日常に必要な存在になっていくんだろうな。
+      br
+      | 同じ対馬育ちの仲間なんですけど、こと対馬に関しては、こんなに地元に愛されていて、上昇志向のあるアーティストは未だかつていなかったかもしれません。
+      br
+      | 島にいながら音楽を発信し、YouTubeやFacebook上でのMV再生回数が100万回超えるって・・・末恐ろしい。
+      br
+      | これからどんな音楽を世に放ち、どんな活躍を見せてくれるのか、とてもワクワクしています。
+      br
+      | 今年から本格的に島外への露出が増えてくる"ずんだれ"を、どうぞお見逃しなく！
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/znaXo4TnbC8" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | Coming Soon...
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'ずんだれ'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

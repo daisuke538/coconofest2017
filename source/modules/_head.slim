@@ -2,18 +2,40 @@ head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.
   meta[charset="utf-8"]
   meta[http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"]
   meta[name="viewport" content="width=device-width, initial-scale=1"]
+  = favicon_tag '/images/favicon.ico'
+  link href="/images/webclip.png" sizes="144×144" rel="apple-touch-icon-precomposed"
   link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"
   link href="https://fonts.googleapis.com/css?family=Hind:300,400,500,600,700" rel="stylesheet"
   link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet"
   link href="https://fonts.googleapis.com/css?family=Slabo+13px" rel="stylesheet"
   link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet"
+  / OGP
+  title
+    | cocono fest.
+    = current_article.nil? ? "｜" + current_page.data.title : "｜" + current_article.date.strftime('%Y') + "｜" + current_article.data.title_jp
+  meta property="og:title" content="cocono fest.#{current_article.nil? ? "｜" + current_page.data.title : "｜" + current_article.date.strftime('%Y') + "｜" + current_article.data.title_jp}"
+  meta property="og:type" content="#{current_article.nil? ? "website" : "article"}"
+  meta property="og:url" content="http://coconofest.asia/#{current_path unless current_path.nil?}"
+  meta property="og:image" content="#{current_article.nil? ? "http://coconofest.asia/images/ogp.jpg" : "http://coconofest.asia/posts/" + current_article.date.strftime('%Y') + "/" + current_article.date.strftime('%m') + "/" + current_article.date.strftime('%d') + "/" + current_article.title + "/images/top-thumbnail.jpg"}"
+  meta property="og:site_name" content="cocono fest."
+  meta property="og:description" content="九州の音楽を地元に、そして全国に発信するフェスのWEBサイト&音楽メディア"
+  meta property="fb:app_id" content="1815757718690727"
+  meta name="twitter:card" content="summarylargeimage"
+  meta property="og:region" content="Fukuoka"
+  meta property="og:country-name" content="Japan"
+  = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "cocono fest. Feed"
+
   script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"
   / StackPile
   script src="https://stackpile.io/stack_161750.js" async="async"
   = stylesheet_link_tag 'style', 'swiper.min'
-  = javascript_include_tag 'main', 'swiper.min'
-  / OGP
-  title
-    | cocono fest.
-    = '｜' + current_article.data.title_jp unless current_article.nil?
-  = feed_tag :atom, "#{blog.options.prefix.to_s}/feed.xml", title: "Atom Feed"
+  = javascript_include_tag 'main', 'swiper.min', 'instafeed.min'
+
+  javascript:
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-63022580-4', 'auto');
+    ga('send', 'pageview');

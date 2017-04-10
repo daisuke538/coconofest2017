@@ -113,7 +113,7 @@ $( function() {
     function( i ) {
       var link = $( location ).attr( 'href' ).split( '/' )[3];
       var url = $( this ).children( 'a' ).attr( 'href' ).split( '/' )[1];
-
+      
       if( link == url ) {
         $( this ).addClass( 'current' );
 
@@ -176,7 +176,7 @@ $( function() {
   var i = 0;
 
   var screenWidth = window.innerWidth;
-  
+
   if ( screenWidth < 760 ) {
     nowViewNum = 6;
     addViewNum = 4;
@@ -224,5 +224,44 @@ $( function() {
   ///////////////
   // SNS SHARE //
   ///////////////
+
+  //////////////////
+  // Instafeed /////
+  //////////////////
+  var loadButton = document.getElementById('insta-load-more');
+
+  var feed = new Instafeed({
+    after: function() {
+      // disable button if no more results to load
+      if (!this.hasNext()) {
+        loadButton.setAttribute('disabled', 'disabled');
+      }
+    },
+    clientId: 'bf54003ab1dd4de7a0b0f5275bad3665',
+    get: 'user',
+    //get: 'tagged',
+    //tagName: 'ココノフェスト',
+    userId: '1797338288',
+    accessToken:'1797338288.bf54003.e476ce055b7744d1896e696b02de320a',
+    links: true ,
+    limit: 10,// 取得件数 
+    resolution:'low_resolution', // thumbnail (default) - 150x150 | low_resolution - 306x306 | standard_resolution - 612x612
+    template: '<a href="{{link}}"><img src="{{image}}" />{{like}}</a>', // 画像URL：{{image}} リンク：{{link}} キャプションテキスト{{caption}} いいね数：{{likes}} コメント数：{{comments}}
+    
+    success: function(){
+      //取得完了時のコールバック
+    }
+  });
+
+  feed.run();
   
+  loadButton.addEventListener('click', function() {
+    feed.next();
+  });
+  
+  /*
+  loadButton.on('click', function(){
+    feed.next();
+  });
+  */
 });

@@ -1,6 +1,6 @@
 ---
 title: wanted-supporter
-title_jp: 'cocono fest.をご支援くださるスポンサーを募集しています！'
+title_jp: 'ご支援してくださるスポンサーを募集しています！'
 date: 2017-04-01 00:01 UTC
 category: cocono fest. 2017
 tags: SUPPORTER

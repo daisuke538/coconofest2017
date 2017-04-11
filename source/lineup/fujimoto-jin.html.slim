@@ -1,0 +1,76 @@
+---
+//pageable: true
+//per_page: 3
+title: 'about a ROOM'
+og-type: 'website'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | フジモトジン
+    .photo
+      = image_tag '/images/lineup/fujimoto-jin.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .twitter
+        | Twitter 
+        = link_to '@fujimotojin3', 'https://twitter.com/fujimotojin3', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | うたが上手い人間、ギターの上手い人間なら日本に沢山いる。
+      br
+      | ただ、彼のように「うたが身体から溢れてる」人間はどれだけいるだろう。
+      br
+      | 私個人は何年も前からフジモトジンを見続けてきたが、特にここ1,2年の彼はおそろしいほどの進化を遂げている。
+      br
+      | まさに彼は今、その進化のさらに先に進もうと、進むべきところまで来たと、私は思っている。
+      br
+      | うたを身につけ、それを従え、その先にある、ただ身を任せるだけでうたが鳴るような音楽家になりつつある。
+      br
+      | その進化の過程を、絶対に見逃してはいけないと、私個人は思う。
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/Ri6d21ElwT0" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | Coming Soon...
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'フジモトジン'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

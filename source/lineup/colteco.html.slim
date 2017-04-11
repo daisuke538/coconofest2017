@@ -1,0 +1,71 @@
+---
+//pageable: true
+//per_page: 3
+title: 'about a ROOM'
+og-type: 'website'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | COLTECO
+    .photo
+      = image_tag '/images/lineup/colteco.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 福岡を中心に、韓国や台湾などアジアのクラブシーンでも楽曲プレイやブッキングが多く、日本に留まらない枠で人気が拡大しているインストバンド・colteco。
+      br
+      | メンバーはShogo Sato(pro&g)、Yohei(kei)、Bancho(dr)の3人組。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://colteco.flavors.me/', 'http://colteco.flavors.me/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@colteco', 'https://twitter.com/colteco', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/FtyvIfBGTS0" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | Coming Soon...
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'COLTECO'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

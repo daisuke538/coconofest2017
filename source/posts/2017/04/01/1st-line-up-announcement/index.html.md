@@ -22,7 +22,7 @@ tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジ�
 ![](./images/about-a-room.jpg)
 
 ### The Folkees
-![](./images/)
+![](./images/the-folkees.jpg)
 
 <div class="mb-50"></div>
 
@@ -31,13 +31,16 @@ tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジ�
 全国へ飛び出すような才能を秘めた、新進気鋭な九州アーティストの音やパフォーマンスがぶつかり合います。
 
 ### COLTECO
-![](./images/)
+![](./images/colteco.jpg)
 
 ### the gofuku town
 ![](./images/)
 
 ### フジモトジン
 ![](./images/fujimoto-jin.jpg)
+
+### ずんだれ
+![](./images/zundare.jpg)
 
 <div class="mb-50"></div>
 

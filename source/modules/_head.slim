@@ -13,12 +13,13 @@ head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.
   title
     | cocono fest.
     = current_article.nil? ? "｜" + current_page.data.title : "｜" + current_article.date.strftime('%Y') + "｜" + current_article.data.title_jp
+  meta name="description" content="「九州の音楽はこんなにもカッコいいんだ」ということを全国へ発信するために、2015年からスタートしたフェスティバル。福岡市西区で開催。 #ココノフェスト"
   meta property="og:title" content="cocono fest.#{current_article.nil? ? "｜" + current_page.data.title : "｜" + current_article.date.strftime('%Y') + "｜" + current_article.data.title_jp}"
   meta property="og:type" content="#{current_article.nil? ? "website" : "article"}"
   meta property="og:url" content="http://coconofest.asia/#{current_path unless current_path.nil?}"
   meta property="og:image" content="#{current_article.nil? ? "http://coconofest.asia/images/ogp.jpg" : "http://coconofest.asia/posts/" + current_article.date.strftime('%Y') + "/" + current_article.date.strftime('%m') + "/" + current_article.date.strftime('%d') + "/" + current_article.title + "/images/top-thumbnail.jpg"}"
   meta property="og:site_name" content="cocono fest."
-  meta property="og:description" content="九州の音楽を地元に、そして全国に発信するフェスのWEBサイト&音楽メディア"
+  meta property="og:description" content="「九州の音楽はこんなにもカッコいいんだ」ということを全国へ発信するために、2015年からスタートしたフェスティバル。福岡市西区で開催。 #ココノフェスト"
   meta property="fb:app_id" content="1815757718690727"
   meta name="twitter:card" content="summarylargeimage"
   meta property="og:region" content="Fukuoka"

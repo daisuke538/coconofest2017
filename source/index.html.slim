@@ -6,6 +6,10 @@ og-type: 'website'
 ---
 
 article#main
+  / hero画像（スライドショーで記事をピックアップ。アーティストピックアップなど）
+
+  / バナー（MUSIC / FOOD / WORKSHOP / KIDS&FAMILY）
+
   / その年のcocono fest.に関する記事をピックアップ
   / 6記事まで表示するように
   section#pickup-article
@@ -50,8 +54,9 @@ article#main
         | 注目の記事
         span
           | FEATURED ARTICLE
-  / インタビュータグ
-  / レビュータグ
+  / ライブタグ（九州で開催されるライブ） 2記事
+  / インタビュータグ 2記事
+  / レビュータグ（音源やライブ） 2記事
   
   / 全記事を取得する
   section#latest-article
@@ -82,34 +87,34 @@ article#main
     | MORE
     
   / その年のcocono fest.を支援してくださる企業のロゴを掲載
-  /#supporter-list
-    .headline
+  #supporter-list
+    /.headline
       h1
         | 協賛
         span
           | SUPPORTER
-    br
-    .grade
+    /br
+    /.grade
       h3
         | GOLD
-    .supporter-image-large
+    /.supporter-image-large
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    hr
-    .grade
+    /hr
+    /.grade
       h3
         | BRONZE
-    .supporter-image-medium
+    /.supporter-image-medium
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    hr
-    .grade
+    /hr
+    /.grade
       h3
         | COCONO
-    .supporter-image-small
+    /.supporter-image-small
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
@@ -117,17 +122,15 @@ article#main
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    br
+    /br
 
-    .headline
+    /.headline
       h1
         | 後援
         span
           | SUPPORTER
-    .supporter-image-large
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", '', :target => '_blank'
+    /.supporter-image-large
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", 'http://www.city.fukuoka.lg.jp/', :target => '_blank'
   .clearfix
 
   / PR広告（Google Adsenseなど）

@@ -1,7 +1,0 @@
-AuthUserFile /home/users/1/main.jp-s-s-fuk/web/staging-coconofest/.htpasswd
-AuthGroupFile /dev/null
-AuthName "ID and Password"
-AuthType Basic
-require valid-user
-AddType image/svg+xml .svg .svgz
-AddEncoding gzip .svgz

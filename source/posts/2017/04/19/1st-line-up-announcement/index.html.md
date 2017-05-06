@@ -1,7 +1,7 @@
 ---
 title: 1st-line-up-announcement
 title_jp: '第1弾出演者発表！'
-date: 2017-04-01 00:00 UTC
+date: 2017-04-19 00:00 UTC
 category: cocono fest. 2017
 tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジモトジン, ずんだれ
 ---
@@ -14,6 +14,7 @@ tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジ�
 
 ## COCONO STAGE
 今の九州を代表するアーティスト、そして全国やアジアから招いた素晴らしいゲストが競演し、プレミアムな音楽空間を生み出します。
+※COCONO STAGEチケットをお持ちの方がご入場いただけます。
 
 ### HAPPY
 ![](./images/happy.jpg)
@@ -24,17 +25,18 @@ tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジ�
 ### The Folkees
 ![](./images/the-folkees.jpg)
 
+### COLTECO
+![](./images/colteco.jpg)
+
 <div class="mb-50"></div>
 
 ## KYUSHU POP UP FLOOR
 
 全国へ飛び出すような才能を秘めた、新進気鋭な九州アーティストの音やパフォーマンスがぶつかり合います。
-
-### COLTECO
-![](./images/colteco.jpg)
+※どなたでも無料でご覧いただけます。
 
 ### the gofuku town
-![](./images/)
+![](./images/the-gofuku-town.jpg)
 
 ### フジモトジン
 ![](./images/fujimoto-jin.jpg)

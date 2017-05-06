@@ -108,6 +108,20 @@ end
 # end
 
 helpers do
+  def get_opg_image()
+    path = ''
+
+    if current_article.nil?
+    
+    elsif
+      path = "posts/" + current_article.date.strftime('%Y') + "/" + current_article.date.strftime('%m') + "/" + current_article.date.strftime('%d') + "/" + current_article.title + "/images/top-thumbnail.jpg"
+    else
+      path = 'images/ogp.jpg'
+    end
+
+    return path
+  end
+
   # カテゴリーやタグ（日本語）一覧を取得するヘルパー
   def get_taxonomies( slug = 'category' )
     list = []
@@ -149,7 +163,9 @@ configure :build do
 
   #activate :gzip
 
-  activate :asset_hash
+  activate :asset_hash do |options|
+    options.ignore = [/^posts/] # asset_hashの対象外にする
+  end
 
   # middleman build 実行後にタスクランナーを実行
   after_build do

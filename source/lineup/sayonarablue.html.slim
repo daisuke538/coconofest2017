@@ -1,56 +1,49 @@
 ---
 //pageable: true
 //per_page: 3
-title: 'about a ROOM'
+title: 'sayonarablue'
 og-type: 'website'
 ---
 
 article#main
   section#artist-detail-info
     .name
-      | フジモトジン
+      | sayonarablue
     .photo
-      = image_tag '/images/lineup/fujimoto-jin.jpg'
+      = image_tag '/images/lineup/sayonarablue.jpg'
     .contents-headline
       | PROFILE
     hr
     .profile
-      | 北九州市小倉を中心にアコースティックギター弾き語りで、酒場、カフェ、海、山、船と、ところかまわず活動中のフォークシンガー。
+      | 宮崎発、平均年齢21歳の若手エレクトロポップバンド。
       br
-      | 福岡県糸島で毎年開催されるSUNSET LIVEに三年連続出演。
+      | 様々なジャンルから影響を受け、独自の浮遊感とポップさを表現。
       br
-      | 現在アルバム製作中。
+      | 温度の低いアンビエントな雰囲気とエレクトロポップ特有のグルーヴを感じさせる、独特のサウンドが特徴的。
       br
-      | 絵を描くように唄いたい。
+      | 自身のファーストep、「chill ep」の発売とともに、県外での活動も積極的に行っている。
+      br
+      | 今年度より、HOLIDAY!RECORS、HMV新宿ALTA店にて「chill ep」を置くが、入荷後即日完売が続いている、今話題のバンド。
     .contents-headline
       | ACCOUNTS
     hr
     .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://sayonara.blue/', 'http://sayonara.blue/', :target => '_blank'
       .twitter
         | Twitter 
-        = link_to '@fujimotojin3', 'https://twitter.com/fujimotojin3', :target => '_blank'
+        = link_to '@sayonara___blue', 'https://twitter.com/sayonara___blue', :target => '_blank'
     .contents-headline
       | STAFF COMMENT
     hr
     .staff-comment
-      | うたが上手い人間、ギターの上手い人間なら世界に沢山いる。
-      br
-      | フジモトジンよりもピッチを外さないシンガーも、技巧的なギタリストと沢山いるだろう。
-      br
-      | ただ、彼のように「うたが身体から溢れている」人間はどれだけいるだろう。私は殆ど知らない。
-      br
-      | 私個人は何年も前からフジモトジンを見続けてきたが、特にここ1年程の彼はおそろしいほどの進化を遂げている。
-      br
-      | まさに彼は今、その進化のさらに先に進もうと、進むべきところまで来たと、私は勝手に思っている。
-      br
-      | うたを身につけ、それを従え、その先にある、ただ身を任せるだけでうたが、音楽が鳴り響くような音楽家になりつつあるのだ。
-      br
-      | その進化の過程を、絶対に見逃してはいけない。
+      | 
     .contents-headline
       | MOVIE
     hr
     .youtube
-      iframe width="100%" height="400" src="https://www.youtube.com/embed/Ri6d21ElwT0" frameborder="0" allowfullscreen
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/gDy9a1AAD-0" frameborder="0" allowfullscreen
     .contents-headline
       | TIME TABLE
     hr
@@ -61,7 +54,7 @@ article#main
     / 6記事まで表示するように
     section#pickup-article
       - blog.tags.each do |tag, articles|
-        - if tag == 'フジモトジン'
+        - if tag == 'sayonarablue'
           .tag-headline
             = '#' + tag + ' 関連記事'
           #pickup-article-inner 

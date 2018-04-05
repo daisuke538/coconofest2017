@@ -1,6 +1,7 @@
 ---
 directory_index: false
 title: 'TICKET'
+ogimage: 'ogp.jpg'
 ---
 
 article#main
@@ -22,17 +23,10 @@ article#main
         .right-item
           | 3,000円
           br
+          br
           | ※小学生以下無料
           br
-          | ※中学・高校生は、当日受付で学生証をご提示いただくと1,000円キャッシュバックいたします
-        .clearfix
-      /.block.del-border-top
-        .left-item
-          | 学割（中・高校生）
-        .right-item
-          | 2,000円
-          br
-          | ※当日受付にて学生証をご提示ください
+          | ※中学・高校生は、当日受付で学生証か在学証明書をご提示いただくと1,000円キャッシュバックいたします
         .clearfix
       .by-area
         | 上記以外のエリア
@@ -40,9 +34,12 @@ article#main
         .left-item
           | 全ての方
         .right-item
-          | 無料
+          | 入場無料
+          br
           br
           | ※チケットは必要なく、どなたでもお楽しみいただけます
+          br
+          | ※一部内容では予約や金銭が必要なものがありますので、ご了承ください
         .clearfix
     .subhead
       h2
@@ -51,7 +48,8 @@ article#main
           | BUY TICKET
     .buy-ticket
       .ticket-seller
-        | Peatix
+        /| Peatix
+        = image_tag "/images/peatix_logo.png"
       .block
         .left-item
           | 全券種取り扱い
@@ -71,7 +69,10 @@ article#main
         .right-item
           | 出演者へのチケット予約（取り置き）が可能です。Twitterやメールで各出演者へお問い合わせください。
           br
+          br
           | ※取り置きを行なっていない出演者もいますので、ご了承ください。
+          br
+          | ※チケット料金は当日受付にてお支払いください
       /.ticket-seller
         | 出演者手売り
       /.block
@@ -79,6 +80,7 @@ article#main
           | 全券種取り扱い
         .right-item
           | 主催者・出演者からライブ等で直接チケットをご購入いただけます。Twitterやメールで各出演者へお問い合わせください。
+          br
           br
           | ※手売りを行なっていない出演者もいますので、ご了承ください。
       /.ticket-seller

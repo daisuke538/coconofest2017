@@ -1,0 +1,66 @@
+---
+//pageable: true
+//per_page: 3
+title: 'masuda miku'
+ogtype: 'website'
+ogimage: 'lineup/2017/art/masuda-miku.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | masuda miku
+    .photo
+      = image_tag '/images/lineup/2017/art/masuda-miku.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 福岡出身イラストレーター。
+      br
+      | 男女の恋愛を中心にイラストや漫画のセンチメンタルな愛しい絵柄で多くの女性から人気を集めている。
+      br
+      | また、ヴィレッジヴァンガードやメジャーデビューバンドとコラボグッズを販売、PARK MAGAZINEでは漫画連載を行なったりなど様々な活動を行なっている。
+      br
+      | 7月8月9月には4ヶ所で個展を開催予定。
+      br
+      | 今話題の若手イラストレーター。
+
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .twitter
+        | Twitter 
+        = link_to '@_mokotomoko_', 'https://twitter.com/_mokotomoko_', :target => '_blank'
+      .instagram
+        | Instagram 
+        = link_to '@moko__to__moko', 'https://www.instagram.com/moko__to__moko/', :target => '_blank'
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'masuda miku'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

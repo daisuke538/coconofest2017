@@ -1,0 +1,65 @@
+---
+//pageable: true
+//per_page: 3
+title: 'モリカン'
+ogtype: 'website'
+ogimage: 'lineup/2017/dj/morikan.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | モリカン
+    .photo
+      = image_tag '/images/lineup/2017/dj/morikan.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 福岡で活動するバンドMATIKAZEのボーカルであるモリチと、coconofestのMC坂口カンナの2人で2017年に結成。
+      br
+      | 結局一度も活動していないが、学生時代の元バンドメンバーだったりします。DJ歴は浅いが、楽しければすべて良し！をモットーに今日もあなたをエモくします。
+
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .twitter
+        | Twitter（モリチ） 
+        = link_to '@matikazevo', 'https://twitter.com/matikazevo', :target => '_blank'
+      .twitter
+        | Twitter（坂口カンナ） 
+        = link_to '@sakaguchi_k1', 'https://twitter.com/sakaguchi_k1', :target => '_blank'
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | KYUSHU POP UP FLOOR 16:00〜
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'モリカン'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

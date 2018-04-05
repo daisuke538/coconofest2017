@@ -1,9 +1,9 @@
 ---
 title: 1st-line-up-announcement
-title_jp: '第1弾出演者発表！'
+title_jp: '「cocono fest. 2017」第1弾出演者としてHAPPY、about a ROOMなど計7組発表'
 date: 2017-04-19 00:00 UTC
-category: cocono fest. 2017
-tags: MUSIC, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジモトジン, ずんだれ
+category: cocono fest.
+tags: cocono fest. 2017, HAPPY, about a ROOM, The Folkees, COLTECO, the gofuku town, フジモトジン, ずんだれ
 ---
 
 「ここから始まる、九州ミュージックムーブメント」をテーマに、九州で活動するアーティストにスポットライトを当てたcocono fest.（ココノフェスト）。

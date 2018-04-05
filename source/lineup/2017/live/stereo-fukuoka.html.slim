@@ -1,0 +1,80 @@
+---
+//pageable: true
+//per_page: 3
+title: 'Stereo Fukuoka'
+ogtype: 'website'
+ogimage: 'lineup/2017/live/stereo-fukuoka.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | Stereo Fukuoka
+    .photo
+      = image_tag '/images/lineup/2017/live/stereo-fukuoka.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 福岡を中心に活動するパーティークリエイター集団。
+      br
+      | 海外の本格EDMシーンを、日本の地方にローカライズすべく、芥屋海岸、ももち浜、能古島、那珂川の山奥など、福岡を中心としたプレイスポットでオリジナルパーティーを開催。また、ミュージックシティ天神などの大規模なフェスから地域のお祭りに至るまで、数々のローカルパーティーにブッキングされ、会場をロックアウト。
+      br
+      | ライブの熱気が話題を呼んでいる。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://stereofukuoka.com/', 'http://stereofukuoka.com/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@st_fuk_japan', 'https://twitter.com/st_fuk_japan', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 福岡夏の3大風物詩といえば山笠！ホークス！Stereo Fukuoka！
+      br
+      | 夏と青春といえば、ギラギラ輝く太陽！飛び散る汗！ポカリスエット！Stereo Fukuoka！
+      br
+      | ダイエット効果が期待できるものといえば！ジム！ジョギング！Stereo Fukuoka！
+      br
+      | 2016年の夏は行く先々を”祭り”へと変えていった彼女たち！さあ！この夏のターゲットは”さいとぴあ”だ！集まれ！パーリーピーポー！
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/7NFX5h5LCuk" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | KYUSHU POP UP FLOOR 13:20〜
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'Stereo Fukuoka'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

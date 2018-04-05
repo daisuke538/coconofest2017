@@ -10,7 +10,7 @@ $( function() {
   var navMask = $( '#nav-mask' );
   var arrowLeft = $( '#arrow-left' );
   var arrowRight = $( '#arrow-right' );
-
+  
   //////////////////////////
   // メニューの両端に矢印表示 //
   //////////////////////////
@@ -53,7 +53,7 @@ $( function() {
       }
     }, 250 );
   });
-
+  
   ///// 横スクロール時 /////
 
   navMask.scroll( function() {
@@ -150,19 +150,20 @@ $( function() {
   //////////////////////
   // hero画像スライダー //
   /////////////////////
-
+  
   var swiper = new Swiper( '.swiper-container', {
-        //pagination: '.swiper-pagination',
+        pagination: '.swiper-pagination',
         //nextButton: '.swiper-button-next',
         //prevButton: '.swiper-button-prev',
-        //paginationClickable: true,
-        //spaceBetween: 30,
+        paginationClickable: true,
+        spaceBetween: 30,
         mode: 'horizontal',
         centeredSlides: true,
-        speed: 0, /* スライドが流れる時間 */
-        autoplay: 0, /* スライドを表示する時間 */
-        autoplayDisableOnInteraction: false,
-        loop: false
+        speed: 1000, /* スライドが流れる時間 */
+        autoplay: 4000, /* スライドを表示する時間 */
+        //autoplayDisableOnInteraction: false,
+        loop: true,
+        spaceBetween: 0
   });
 
   //////////////////////
@@ -208,7 +209,7 @@ $( function() {
 
     $( '#latest-article-inner .article-card:lt(' + nowViewNum + ')' ).slideDown( 'slow' ).show();
   });
-
+  
   //////////////
   // PAGE TOP //
   //////////////
@@ -225,11 +226,32 @@ $( function() {
   // SNS SHARE //
   ///////////////
 
+  ///////////////////////////////////////
+  // 下スクロールで消えて、上スクロールで表示 //
+  ///////////////////////////////////////
+  var footerHeight = $( '#buy-ticket-fix-footer' ).height();
+  var startPos = 0;
+  
+  $( window ).scroll( function(){
+    var currentPos = $( this ).scrollTop();
+    
+    if ( currentPos > startPos ) {
+      if( $( window ).scrollTop() >= 100 ) {
+        //$( '#buy-ticket-fix-footer' ).css( 'top', '-' + footerHeight + 'px' ).fadeOut();
+        $( '#buy-ticket-fix-footer' ).fadeOut();
+      }
+    } else {
+      $( '#buy-ticket-fix-footer' ).fadeIn();
+    }
+    
+    startPos = currentPos;
+  });
+
   //////////////////
   // Instafeed /////
   //////////////////
   var loadButton = document.getElementById('insta-load-more');
-
+  
   var feed = new Instafeed({
     after: function() {
       // disable button if no more results to load

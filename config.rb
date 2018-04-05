@@ -86,7 +86,10 @@ activate :blog do |blog|
   blog.paginate = true
   blog.per_page = 10
   blog.page_link = "page/{num}"
-
+  
+  ## 未来の記事のビルドを有効にする
+  blog.publish_future_dated = true
+  
   blog.custom_collections = {
     category: {
       link: "category/{category}/index.html",
@@ -151,6 +154,8 @@ configure :build do
   ignore 'stylesheets/*'
   ignore 'javascripts/*'
   ignore 'images/*'
+  ignore 'lineup/_*'
+  ignore 'posts/*/_*'
 
   # Minify HTML on build
   activate :minify_html, :remove_quotes => false, :remove_intertag_spaces => true

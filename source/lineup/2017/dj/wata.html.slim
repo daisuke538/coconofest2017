@@ -1,0 +1,64 @@
+---
+//pageable: true
+//per_page: 3
+title: '(W)ata'
+ogtype: 'website'
+ogimage: 'lineup/2017/dj/wata.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | (W)ata（Metro/Rock Steady/R!L!D!）
+    .photo
+      = image_tag '/images/lineup/2017/dj/wata.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | ROCKを軸とし、オールジャンルで幅広い選曲•ショートMIXを得意とする超雑食系DJ。
+      br
+      | 年間約70本の県内外のイベントに出演し、多くのアーティスト、著名人とも共演を果たす。
+      br
+      | また、5時間で111杯ショットの飲酒記録を持つ飲兵衛。
+
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .twitter
+        | Twitter 
+        = link_to '@watamosha', 'https://twitter.com/watamosha', :target => '_blank'
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | KYUSHU POP UP FLOOR 12:05〜 他
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == '(W)ata'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

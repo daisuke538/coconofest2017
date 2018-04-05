@@ -2,8 +2,8 @@
 title: wanted-volunteer
 title_jp: 'cocono fest.を一緒に作ってくれるボランティアスタッフを募集しています！'
 date: 2017-04-19 00:02 UTC
-category: cocono fest. 2017
-tags: VOLUNTEER
+category: cocono fest.
+tags: cocono fest. 2017, VOLUNTEER
 ---
 
 2017年夏、福岡市西区さいとぴあにて開催されるcocono fest. 2017を、ともに盛り上げてくださるボランティアスタッフを募集します。

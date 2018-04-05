@@ -20,7 +20,24 @@ aside#side-bar
       | 人気のタグ
       span
         | POPULAR TAG
-
+  
+  .headline
+    h1
+      | プロジェクト
+      span
+        | PROJECT
+  .project-list
+    = link_to 'cocono live', '/cocono-live.html', :class => 'project'
+    /= link_to 'cocono kitchen', '/cocono-kitchen.html', :class => 'project'
+  
+  / PR広告（Google Adsenseなど）
+  .pr-sidebar
+    .pr-banner
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2362957213282537" data-ad-slot="8697902200"
+      javascript:
+        (adsbygoogle = window.adsbygoogle || []).push({});
+  
   .headline
     h1
       | カテゴリー
@@ -29,14 +46,6 @@ aside#side-bar
   .category-list
     - get_taxonomies('category').each do |category, count|
       = link_to "#{category}", category_path(category), :class => 'category'
-
-  / PR広告（Google Adsenseなど）
-  .pr-sidebar
-    .pr-banner
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      ins class="adsbygoogle" style="display:inline-block;width:300px;height:250px" data-ad-client="ca-pub-2362957213282537" data-ad-slot="8697902200"
-      javascript:
-        (adsbygoogle = window.adsbygoogle || []).push({});
 
   .headline
     h1
@@ -51,6 +60,12 @@ aside#side-bar
        - unless tag.nil?
          = link_to '#'+tag, tag_path(tag), :class => 'tag'
   .clearfix
+  
+  .headline
+    h1
+      | Spotify
+  .spotify
+    iframe src="https://open.spotify.com/embed/user/coconofest/playlist/1n8SYI7yC4uTzSjYfwcl3d" width="100%" height="380" frameborder="0" allowtransparency="true"
   
   / PR広告（Google Adsenseなど）
   .sidebar-banner

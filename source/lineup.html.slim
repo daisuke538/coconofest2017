@@ -1,6 +1,7 @@
 ---
 directory_index: false
 title: 'LINE-UP'
+ogimage: 'ogp.jpg'
 ---
 
 article#main
@@ -8,9 +9,27 @@ article#main
     .headline
       h1
         | LINE-UP
+    .select-tab
+      = link_to 'LIVE', '#lineup-live'
+      | ｜
+      = link_to 'DJ', '#lineup-dj'
+      | ｜
+      = link_to 'DANCE', '#lineup-dance'
+      | ｜
+      = link_to 'MC', '#lineup-mc'
+      br
+      = link_to 'ART', '#lineup-art'
+      | ｜
+      = link_to 'KIDS', '#lineup-kids'
+      | ｜
+      = link_to 'MARKET', '#lineup-market'
+      /= link_to 'MARKET', '#lineup-market', :class => 'not-active'
+    .subhead#lineup-live
+      h2
+        | LIVE
     .stage-name
       | COCONO STAGE
-    span
+    .note
       | ※入場には、COCONO STAGEチケットが必要です
     .stage-description
       | 今の九州を代表するアーティスト、そして全国やアジアから招いた素晴らしいゲストが競演し、プレミアムな音楽空間を生み出すステージ
@@ -18,76 +37,318 @@ article#main
       .artist-card
         / 比率 3:2（750px500px）
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/happy-small.jpg'}", './lineup/happy'
+          = link_to "#{image_tag '/images/lineup/2017/live/sakanamon-small.jpg'}", './lineup/2017/live/sakanamon'
+        .name
+          | SAKANAMON
+      .artist-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/live/happy-small.jpg'}", './lineup/2017/live/happy'
         .name
           | HAPPY
       .artist-card
         / 比率 3:2（750px500px）
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/about-a-room-small.jpg'}", './lineup/about-a-room'
+          = link_to "#{image_tag '/images/lineup/2017/live/hom-small.png'}", './lineup/2017/live/hom-shenhao'
+        .name
+          | 洪 申豪（ex.透明雑誌）
+          br
+          | [from 台湾]
+      .artist-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/live/about-a-room-small.jpg'}", './lineup/2017/live/about-a-room'
         .name
           | about a ROOM
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/the-folkees-small.jpg'}", '/lineup/the-folkees'
-        .name
-          | The Folkees
-      .artist-card
-        / 比率 3:2
-        .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/colteco-small.jpg'}", '/lineup/colteco'
+          = link_to "#{image_tag '/images/lineup/2017/live/colteco-small.jpg'}", '/lineup/2017/live/colteco'
         .name
           | COLTECO
       .artist-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/live/iriko-small.jpg'}", './lineup/2017/live/iriko'
+        .name
+          | IRIKO
+      .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/comingsoon.jpg'}", '#'
+          = link_to "#{image_tag '/images/lineup/2017/live/the-folkees-small.jpg'}", '/lineup/2017/live/the-folkees'
+        .name
+          | The Folkees
       /.artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/iriko.jpg'}", '#'
-        .name
-          | IRIKO
+          = link_to "#{image_tag '/images/lineup/2017/comingsoon.jpg'}", '#'
     .stage-name
       | KYUSHU POP UP FLOOR
-    span
+    .note
       | ※チケット不要でどなたでも無料でご覧いただけます
     .stage-description
       | 全国へ飛び出すような才能を秘めた、新進気鋭の九州アーティストが音やパフォーマンスでぶつかり合うステージ
     .artist-list
-      /.artist-card
+      .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/sayonarablue-small.jpg'}", '/lineup/sayonarablue'
+          = link_to "#{image_tag '/images/lineup/2017/live/made-in-hepburn-small.jpg'}", '/lineup/2017/live/made-in-hepburn'
+        .name
+          | MADE IN HEPBURN
+      .artist-card
+        / 比率 3:2
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/live/sayonarablue-small.jpg'}", '/lineup/2017/live/sayonarablue'
         .name
           | sayonarablue
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/the-gofuku-town-small.jpg'}", '/lineup/the-gofuku-town'
+          = link_to "#{image_tag '/images/lineup/2017/live/stereo-fukuoka-small.jpg'}", '/lineup/2017/live/stereo-fukuoka'
+        .name
+          | Stereo Fukuoka
+      .artist-card
+        / 比率 3:2
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/live/the-gofuku-town-small.jpg'}", '/lineup/2017/live/the-gofuku-town'
         .name
           | the gofuku town
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/fujimoto-jin-small.jpg'}", '/lineup/fujimoto-jin'
+          = link_to "#{image_tag '/images/lineup/2017/live/fujimoto-jin-small.jpg'}", '/lineup/2017/live/fujimoto-jin'
         .name
           | フジモトジン
       .artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/zundare-small.jpg'}", '/lineup/zundare'
+          = link_to "#{image_tag '/images/lineup/2017/live/zundare-small.jpg'}", '/lineup/2017/live/zundare'
         .name
           | ずんだれ
-      .artist-card
-        / 比率 3:2
-        .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/comingsoon.jpg'}", '#'
       /.artist-card
         / 比率 3:2
         .card-eyecatch
-          = link_to "#{image_tag '/images/lineup/num-contena-small.jpg'}", 'http://numcontena.tumblr.com/', :target => '_blank'
+          = link_to "#{image_tag '/images/lineup/2017/comingsoon.jpg'}", '#'
+
+    .subhead#lineup-dj
+      h2
+        | DJ
+    .dj-list
+      .dj-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dj/ogata-shinichiro-small.jpg'}", './lineup/2017/dj/ogata-shinichiro'
         .name
-          | Num Contena
-          
+          | オガタシンイチロウ（cue.）
+      .dj-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dj/shimamen-small.jpg'}", './lineup/2017/dj/shimamen'
+        .name
+          | Shimamen.y（Re:Road）
+      .dj-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dj/nakao-monchi-small.jpg'}", './lineup/2017/dj/nakao-monchi'
+        .name
+          | 中尾モンチ
+      .dj-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dj/morikan-small.jpg'}", './lineup/2017/dj/morikan'
+        .name
+          | モリカン
+      .dj-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dj/wata-small.jpg'}", './lineup/2017/dj/wata'
+        .name
+          | (W)ata（Metro/Rock Steady/R!L!D!）
+
+    .subhead#lineup-dance
+      h2
+        | DANCE
+    .dance-list
+      .dance-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/dance/atp-small.jpg'}", './lineup/2017/dance/atp'
+        .name
+          | ATP（九州大学ダンスサークル）
+
+    .subhead#lineup-mc
+      h2
+        | MC
+    .mc-list
+      .mc-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/mc/machida-hayato-small.jpg'}", './lineup/2017/mc/machida-hayato'
+        .name
+          | 町田隼人
+      .mc-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/mc/sakaguchi-kanna-small.jpg'}", './lineup/2017/mc/sakaguchi-kanna'
+        .name
+          | 坂口カンナ
+
+    .subhead#lineup-art
+      h2
+        | ART
+    .note
+      | ※チケット不要でどなたでも無料でご観覧いただけます
+      br
+      | ※グッズ等の購入には別途金銭が必要となります
+    .art-list
+      .art-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/art/masuda-miku-small.jpg'}", './lineup/2017/art/masuda-miku'
+        .name
+          | masuda miku
+      .art-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/art/cigarette-burns-small.jpg'}", './lineup/2017/art/cigarette-burns'
+        .name
+          | Cigarette-burns
+      .art-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/art/laurence-philomene-small.jpg'}", './lineup/2017/art/laurence-philomene'
+        .name
+          | LAURENCE PHILOMENE
+      .art-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/art/sayuri-murooka-small.jpg'}", './lineup/2017/art/sayuri-murooka'
+        .name
+          | SAYURI MUROOKA
+
+    .subhead#lineup-kids
+      h2
+        | KIDS
+    .note
+      | ※チケット不要でご利用いただけます
+      br
+      | ※ワークショップ、託児所利用においては別途予約や金銭が必要となります
+    .kids-list
+      .kids-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/kids/cardboard-workshop-small.jpg'}", '/cocono-fest/kids-area-information/'
+        .name
+          | ダンボールギターづくりワークショップ
+      .kids-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/kids/nursery-small.jpg'}", '/cocono-fest/kids-area-information/'
+        .name
+          | 託児所
+
+    .subhead#lineup-market
+      h2
+        | MARKET
+    .note
+      | ※チケット不要でどなたでも無料でご来場いただけます
+      br
+      | ※飲食物の購入には別途金銭が必要となります
+    .market-list
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = image_tag '/images/lineup/2017/market/cocono-kitchen.jpg'
+        .name
+          | ココノキッチン
+          .service
+            | [タコライス/かき氷/各種ドリンク]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/banks.jpg'}", 'https://www.facebook.com/BANKS.FUKUOKA', :target => '_blank'
+        .name
+          | BANKS
+          .service
+            | [ブリトー/モヒート]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/noimage.jpg'}", 'https://www.facebook.com/areacoffee/', :target => '_blank'
+        .name
+          | area coffee
+          .service
+            | [コーヒー/クッキー]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/marumiya-seikaten.jpg'}", 'https://www.facebook.com/%E3%81%BE%E3%82%8B%E3%81%BF%E3%82%84%E9%9D%92%E6%9E%9C-248507432161373/', :target => '_blank'
+        .name
+          | まるみや青果店
+          .service
+            | [スムージー/カットフルーツ]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = image_tag '/images/lineup/2017/market/rockie-chicken.jpg'
+        .name
+          | ロッキーチキン
+          .service
+            | [チキンオーバーライス]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/kashiwa.jpg'}", 'http://imo-imo-imo.net/kashiwa/', :target => '_blank'
+        .name
+          | かし和
+          .service
+            | [唐揚げ/カレーパン]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/noimage.jpg'}", 'http://www.macocchan.com/', :target => '_blank'
+        .name
+          | まこっちゃん
+          .service
+            | [焼き鳥]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/niseco.jpg'}", 'https://www.facebook.com/nisekolove/', :target => '_blank'
+        .name
+          | ニセコ
+          .service
+            | [スープカレー]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/yuyu.jpg'}", 'https://www.facebook.com/%E7%B3%B8%E5%B3%B6%E3%83%A9%E3%83%BC%E3%83%A1%E3%83%B3%E3%82%86%E3%81%86%E3%82%86%E3%81%86-%E4%BB%8A%E5%AE%BF%E5%BA%97-683038965231439/', :target => '_blank'
+        .name
+          | 糸島ラーメン ゆうゆう
+          .service
+            | [ラーメン/餃子]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/signpost.jpg'}", 'https://twitter.com/bar_signpost', :target => '_blank'
+        .name
+          | 梅酒Bar Signpost
+          .service
+            | [梅酒/カレー]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/official-goods.jpg'}", '/goods.html'
+        .name
+          | cocono fest.公式ショップ
+          .service
+            | [公式グッズ販売/masuda mikuグッズ販売/Cigarette-burnsグッズ販売]
+      .market-card
+        / 比率 3:2（750px500px）
+        .card-eyecatch
+          = link_to "#{image_tag '/images/lineup/2017/market/tsutaya.jpg'}", 'http://store-tsutaya.tsite.jp/storelocator/detail/7427.html', :target => '_blank'
+        .name
+          | TSUTAYA
+          .service
+            | [中古CD販売/出演者CD販売/出演者サイン会]
+      

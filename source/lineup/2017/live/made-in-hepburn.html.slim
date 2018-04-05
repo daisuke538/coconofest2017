@@ -1,0 +1,137 @@
+---
+//pageable: true
+//per_page: 3
+title: 'MADE IN HEPBURN'
+ogtype: 'website'
+ogimage: 'lineup/2017/live/made-in-hepburn.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | MADE IN HEPBURN
+    .photo
+      = image_tag '/images/lineup/2017/live/made-in-hepburn.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 2016年 活動開始。
+      br
+      | グッドなバンドグルーヴとメロウなエレクトロサウンド。
+      br
+      | カルチャーアイコンとしてのグループを目指すべく発信中。トラッド重視。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      /.website
+        | WEBサイト 
+        = link_to 'http://sayonara.blue/', 'http://sayonara.blue/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@MadeInHepburn', 'https://twitter.com/MadeInHepburn', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 2016年、活動開始
+      br
+      | モリヤマ（Syn./Vo./Samp.）
+      br
+      | Goe（Ba.）
+      br
+      | コージーパウエル（Dr./Samp.）
+      br
+      | アウトレイジタクミービヨンド（Gt./Syn.）
+      br
+      | 久野ゴリラ（Gt.）
+      br
+      br
+      | 前身のバンドのメンバーを中心に、全く違う視点から新たな音楽へのアプローチをしようと始まったのがこのバンド。
+      br
+      br
+      | MADE IN HEPBURN
+      br
+      br
+      | 彼らの姿を別の形で、ライブハウスで見た人もいるかもしれない。
+      br
+      | しかし「以前のバンドの延長線上にこのバンドがあるのでない」と本人が語る通り、メンバーほぼそのままであるにもかかわらず前身であるバンドから大きく音楽性を変えた。
+      br
+      br
+      | 作曲は、Ba.アウトレイジたくみが中心となり、まずドラムからのビート、それにメロディが乗る。
+      br
+      br
+      | ビートからのメロディ、以前はロックバンドであった彼らは正統派の、トラッドなソウル的解釈で自分たちの音楽を新たに構築し始めた。
+      br
+      br
+      | 動き回るベースライン、カッティングするギター、街の夜の光のようなシンセサイザーの音。
+      br
+      br
+      | それに乗るのは森山タカヒロの優しく繊細な都会的な歌声。
+      br
+      br
+      | 彼らの音楽は古い楽曲の持つグルーヴ感と現代的な心地よさ
+      br
+      | そして切なさを融合させた「今の時代」のアーバンソウルといえる。
+      br
+      | （個人的解釈だけどアーバンソウルってジャンルというよりは音の雰囲気を表すと思う）
+      br
+      br
+      | 90年代にはなかった
+      br
+      | 2010年代後半の、現代の持つ切なさを彼らの歌には感じる。
+      br
+      br
+      | 毎日の楽しさの裏にある、何か。
+      br
+      br
+      | きっと彼らは
+      br
+      | この街に住む、この時代を生きる
+      br
+      | 僕らの等身大の
+      br
+      | カルチャーアイコンなんだろう。
+
+    /.contents-headline
+      | MOVIE
+    /hr
+    /.youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/gDy9a1AAD-0" frameborder="0" allowfullscreen
+    .contents-headline
+      | MUSIC
+    hr
+    .spotify
+      iframe src="https://open.spotify.com/embed/album/1MRh5goAm7WmTwr3TZ6NJV" width="300" height="380" frameborder="0" allowtransparency="true"
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | KYUSHU POP UP FLOOR 16:35〜
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'MADE IN HEPBURN'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

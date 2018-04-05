@@ -4,27 +4,29 @@ nav[role="navigation"]
     #arrow-left
     ul.nav-inner
       .holding-year
-        | 2017
+        | cocono fest. 2018
       li.current
         = link_to 'HOME', '/index.html'
       li
         = link_to 'GUIDELINE', '/guideline.html'
       li
-        = link_to 'LINEUP', '/lineup.html'
-      li.not-active
-        = link_to 'TIMETABLE', '', :class => 'not-active'
+        = link_to 'TICKET', '/ticket.html', :class => 'not-active'
       li
-        = link_to 'TICKET', '/ticket.html'
-      li.not-active
-        = link_to 'SHOP', '', :class => 'not-active'
-      li.not-active
-        = link_to 'GOODS', '', :class => 'not-active'
-      li.not-active
-        = link_to 'MAP', '', :class => 'not-active'
+        = link_to 'LINEUP', '/lineup.html', :class => 'not-active'
+      li
+        = link_to 'TIMETABLE', '/timetable.html', :class => 'not-active'
+      li
+        = link_to 'GOODS', '/goods.html', :class => 'not-active'
+      li
+        = link_to 'MAP', '/map.html', :class => 'not-active'
       li
         = link_to 'ACCESS', '/access.html'
       li.
-        = link_to 'SUPPORTER', '/supporter.html'
+        = link_to 'SUPPORTER', '/supporter.html', :class => 'not-active'
+      /li.not-active
+        = link_to 'EVENT', '', :class => 'not-active'
       li.not-active
+        = link_to 'ARCHIVE', '', :class => 'not-active'
+      /li.not-active
         = link_to 'ARCHIVE', '', :class => 'not-active'
     #arrow-right

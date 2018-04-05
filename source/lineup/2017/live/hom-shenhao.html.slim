@@ -1,0 +1,82 @@
+---
+//pageable: true
+//per_page: 3
+title: '洪 申豪'
+ogtype: 'website'
+ogimage: 'lineup/2017/live/hom.png'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | 洪 申豪（ex.透明雑誌）
+    .photo
+      = image_tag '/images/lineup/2017/live/hom.png'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 元・透明雑誌のギターボーカル、元VOOIDのフロントマン。台湾のインディレーベル「Petit Alp Records」を主催。
+      br
+      | 今までにソロ作品を3枚発表、3枚目のソロアルバム「Cancer + 2songs」は日本でBIG ROMATIC RECORDSよりリリースしている。
+      br
+      | 同世代の台湾シンガーソングライターの中でもメロディの良さはダントツ。猫が好き、牛肉麺好き。
+      br
+      | we are forever young
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'https://www.facebook.com/peopleareretarded/', 'https://www.facebook.com/peopleareretarded/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@hsh_japan', 'https://twitter.com/hsh_japan', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 透明雑誌のボーカルとして台湾ロックを日本に広めたパイオニア的存在。そんな彼のソロ作に初めて触れたのが代表曲の１つでもある「LIGHT CORAL」。
+      br
+      | うわぁ～～めちゃくちゃええやん。。。と溜息まじりの声が漏れてしまうほど心鷲まれちゃいました！
+      br
+      | アコースティックを基調としているシンプルな楽曲からは、彼そのものの人間性がよく表れている。温かさや優しさが一貫して溢れており、センス抜群のメロディーは誰もが聴きやすいながらも、どこか変態的な音楽性も潜んでおり（良い意味で！）、そこに他とは一線を画す独自の世界観がある。
+      br
+      | 何よりも「音楽って楽しいーー！！」という感じが聴く側にも伝わってすごく幸せな気持ちにさせてくれます！絶対見ておくべきオススメのアーティストです！名曲「金巴利」も最高なのでライブ前には予習を！
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/DSpe1hdRGhw" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | COCONO STAGE 17:05〜
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == '洪申豪'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

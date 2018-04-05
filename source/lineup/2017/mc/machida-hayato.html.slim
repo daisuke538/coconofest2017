@@ -1,0 +1,64 @@
+---
+//pageable: true
+//per_page: 3
+title: '町田隼人'
+ogtype: 'website'
+ogimage: 'lineup/2017/mc/machida-hayato.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | 町田隼人
+    .photo
+      = image_tag '/images/lineup/2017/mc/machida-hayato.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 朝倉出身のお笑い芸人。
+      br
+      | しかし、優先順位は、『音楽＞お笑い』と、音楽の方によりアンテナを張り、情熱を注いでおり、若手バンドのライブや、ハードロックカフェ、サンセットライブなど、音楽イベントでのMCを生きがいにしている。
+      br
+      | 特に、スカ、スウィングジャズが大好き。
+      br
+      | パーソナリティーを務める FM福岡「GOW‼」で、渾身の曲をかけるのも生きがい。
+
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://www.watanabepro.co.jp/mypage/80000007/', 'http://www.watanabepro.co.jp/mypage/80000007/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@machida_pin', 'https://twitter.com/machida_pin', :target => '_blank'
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == '町田隼人'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

@@ -1,0 +1,69 @@
+---
+//pageable: true
+//per_page: 3
+title: 'Cigarette-burns'
+ogtype: 'website'
+ogimage: 'lineup/2017/art/cigarette-burns.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | Cigarette-burns
+    .photo
+      = image_tag '/images/lineup/2017/art/cigarette-burns.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 画家、デザイナー、イラストレーター、ペインター と福岡を拠点に様々な活動をしているアーティスト Maru の活動の総称。
+      br
+      br
+      | NY発のバックブランド「ManhattanPortage」やファッションブランド「Johnbull 」、「GALLERIE」との公式コラボレーションを実現。
+      br
+      | 身に纏い使用していく中で完成されていく進行形のアート作品を制作中。
+      br
+      br
+      | Cigarette-burnsの商品は「ミツカルストア by ワンスアマンス」にて取り扱い中。
+
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト
+        = link_to 'http://cigarette-burns.com/', 'http://cigarette-burns.com/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@cb_maru', 'https://twitter.com/cb_maru', :target => '_blank'
+      .instagram
+        | Instagram 
+        = link_to '@cb_maru', 'https://www.instagram.com/cb_maru/', :target => '_blank'
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'Cigarette-burns'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

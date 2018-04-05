@@ -2,37 +2,66 @@
 //pageable: true
 //per_page: 3
 title: 'ここから始まる、九州ミュージックムーブメント'
-og-type: 'website'
+ogtype: 'website'
+ogimage: 'ogp.jpg'
 ---
 
 article#main
   / hero画像（スライドショーで記事をピックアップ。アーティストピックアップなど）
 
   / バナー（MUSIC / FOOD / WORKSHOP / KIDS&FAMILY）
+  section#top-banner
+    .cocono-live-banner
+    .cocono-kitchen-banner
+    .clearfix
+
+  section#pickup-article
+    .tag-headline
+      | #cocono fest. 2018
+    #pickup-article-inner
+      - page_articles.each_with_index do |article, i|
+        - article.tags.each do |tag|
+          - if tag == 'cocono fest. 2018' && i < 6
+            .article-card
+              .card-eyecatch
+                = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+              .card-text
+                .card-text-top
+                  .card-category
+                    = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                  .card-tags
+                    - article.tags.each_with_index do |tag, l|
+                      = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                  .clearfix
+                  .article-date
+                    = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                h3
+                  = link_to article.data.title_jp, article
 
   / その年のcocono fest.に関する記事をピックアップ
   / 6記事まで表示するように
   section#pickup-article
-    .category-headline
-      | cocono fest. 2017
-    #pickup-article-inner 
-      - page_articles.each_with_index do |article, i|
-        - if article.data.category == 'cocono fest. 2017' && i < 6
-          .article-card
-            .card-eyecatch
-              = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
-            .card-text
-              .card-text-top
-                .card-category
-                  = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
-                .card-tags
-                  - article.tags.each_with_index do |tag, j| 
-                    = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
-                .clearfix
-                .article-date
-                  = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
-              h3
-                = link_to article.data.title_jp, article
+    .tag-headline
+      | #cocono fest. 2017
+    #pickup-article-inner
+      - page_articles.each_with_index do |article, k|
+        - article.tags.each do |tag|
+          - if tag == 'cocono fest. 2017' && k <= 6
+            .article-card
+              .card-eyecatch
+                = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+              .card-text
+                .card-text-top
+                  .card-category
+                    = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                  .card-tags
+                    - article.tags.each_with_index do |tag, l|
+                      = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                  .clearfix
+                  .article-date
+                    = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                h3
+                  = link_to article.data.title_jp, article
 
   /section#sponsor-article
     .tag-headline
@@ -57,7 +86,7 @@ article#main
   / ライブタグ（九州で開催されるライブ） 2記事
   / インタビュータグ 2記事
   / レビュータグ（音源やライブ） 2記事
-  
+
   / 全記事を取得する
   section#latest-article
     .headline
@@ -66,7 +95,7 @@ article#main
         span
           | LATEST ARTICLE
     #latest-article-inner
-      - page_articles.each_with_index do |article, i|
+      - page_articles.each_with_index do |article, m|
         .article-card
           .card-eyecatch
             = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
@@ -75,7 +104,7 @@ article#main
               .card-category
                 = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
               .card-tags
-                - article.tags.each_with_index do |tag, j| 
+                - article.tags.each_with_index do |tag, n|
                     = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
               .clearfix
               .article-date
@@ -85,9 +114,17 @@ article#main
 
   .load-more
     | MORE
-    
+
   / その年のcocono fest.を支援してくださる企業のロゴを掲載
-  #supporter-list
+  /#supporter-list
+    /.headline
+      h1
+        | 後援
+        span
+          | SUPPORTER
+    /.supporter-image-large
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", 'http://www.city.fukuoka.lg.jp/', :target => '_blank'
+
     /.headline
       h1
         | 協賛
@@ -101,36 +138,32 @@ article#main
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /hr
     /.grade
       h3
         | BRONZE
     /.supporter-image-medium
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /hr
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", 'http://tsutaya.tsite.jp/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/hmv_hakata.png"}", 'http://www.hmv.co.jp/st/eventlist/BHK/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/shimamura_gakki.jpg"}", 'http://www.shimamura.co.jp/hakata/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/mikasa_tokushu_kogyo.jpg"}", 'http://mikasakk.co.jp/', :target => '_blank'
     /.grade
       h3
         | COCONO
     /.supporter-image-small
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /br
+      = link_to "#{image_tag "/images/supporters/fukuoka_ijyu_keikaku.jpg"}", 'http://fukuoka-ijyu.jp/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/itonomori.jpg"}", 'https://www.ito-mori.com/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/mrt.jpg"}", 'http://321.mrt-studio.jp/', :target => '_blank'
+      /= link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
 
     /.headline
       h1
-        | 後援
+        | 協力
         span
           | SUPPORTER
-    /.supporter-image-large
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", 'http://www.city.fukuoka.lg.jp/', :target => '_blank'
+    /.supporter-image-small
+      = link_to "#{image_tag "/images/supporters/place.jpg"}", 'http://www.place-edu.com/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/ritomon.jpg"}", 'http://litomon.plus/', :target => '_blank'
+
   .clearfix
 
   / PR広告（Google Adsenseなど）
@@ -156,4 +189,3 @@ article#main
     #instafeed
     /button id="insta-load-more" type="button"
      | MORE
-  

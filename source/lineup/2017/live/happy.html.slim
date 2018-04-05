@@ -1,0 +1,106 @@
+---
+//pageable: true
+//per_page: 3
+title: 'HAPPY'
+ogtype: 'website'
+ogimage: 'lineup/2017/live/happy.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | HAPPY
+    .photo
+      = image_tag '/images/lineup/2017/live/happy.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 京都府綾部市出身、幼馴染み5人組により2012年1月11日に結成。
+      br
+      | 全員が複数のパートを担当し自由な発想で創られた楽曲がライブハウスシーンとSNSによる口コミで広まり、デビュー前にして2013年SUMMER SONIC出演をきっかけに注目が集まる。
+      br
+      | 2014年3月3日、初流通シングル「SUN」（TOWER RECORDS限定）リリース。MTV [HOTSEAT]に選出され、タワーインディーチャート初登場1位（総合チャート3位）を記録。
+      br
+      | 同年3月12日からアメリカテキサス州オースティンで開催される世界最大の音楽見本市"SXSW"への 出演も含めたUSツアーを行う。計8都市10公演に出演し各地で大盛況となった。
+      br
+      | 2014年8月6日、1stアルバム「HELLO」をリリース。収録曲がSPACE SHOWER TV [POWER PUSH!]やFM802 [邦楽ヘビーローテーション]等に選出され、各誌・サイトの2014年ベストディスクにも多数選ばれる。
+      br
+      | 数々の大型フェスや国内ツアーを経て、2014年末にはバンド初となるワンマンツアー（東阪公演ソールドアウト）を開催。
+      br
+      | 2015年2月からのスペースシャワー列伝 JAPAN TOUR 2015ツアーに参加。（全9会場ソールドアウト）
+      br
+      | 同年5月13日、1stEP「To The Next」をリリース。全18本の全国ツアーを開催。
+      br
+      | 2016年1月Sound Cloudに新曲「CYM」をUP。
+      br
+      | 同年3月自主企画「ELECTRIC FLOWER CARNIVAL」を新代田FEVERにて開催（ソールドアウト）。
+      br
+      | 同年4月初の台湾ツアーを開催。（ソールドアウト）
+      br
+      | 同年6月GAPミュージックプロジェクト「1969 RECORDS」とのタイアップアーティストに選出。
+      br
+      | 同年8月自主企画「PERMANENT VACATION」を大阪・東京で開催。
+      br
+      | Photo ZINE「Mellow Fellow」発売。（現在完売）
+      br
+      | 同年10月自主企画「HAPPY HALLOWEEN」開催。Photo ZINE第二弾「HEY」発売。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://happyofficial.com/', 'http://happyofficial.com/', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@A_Band_HAPPY', 'https://twitter.com/a_band_happy', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 昔は怒号が飛び交い、酒瓶があれば殴り合い、流血上等、行くときは少年ジャンプを腹にくくりつけていくのがライブハウスの常だったと聞きますが、今は、お花の話とかクッキーの美味しい焼き方で盛り上がっていると聞きます（適当）。
+      br
+      | 個人的にはポトフ作りの上手な女性とお知り合いになりたいので、後者のほうがより好みなのですが、もちろん死ぬまでに一回くらいは目の前で大の男が脳天割られて失禁しているようなヒリヒリしたライブハウスも見てみたいなーとは思っております。
+      br
+      | 日本において、そんなヒリヒリ感を感じている唯一のバンドがHAPPYです。サイケからエレクトロ、はたまたモータウンまで、ビートルズやツェッペリンといったクラシックロックの伝統に基づきつつも、ポップミュージックの歴史を駆け抜ける、非常に音楽IQの高い楽曲群が持ち味なのですが、そういう賢そうな輩こそ怖い。目が怖い。カワイイはずのパンダの目がよく見ると肉食動物のソレっていうのと同じ現象です。
+      br
+      | サマー・オブ・ラブなバンド名は名ばかりに、音楽で僕らの脳天をかち割って音楽天国に血のお花畑を咲かせてくれることを心の底から期待しています！
+      br
+      | そんな光景が見れたら、今年の夏は超HAPPY！スーパーHAPPY！
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="560" height="315" src="https://www.youtube.com/embed/XhK9S-YnZlA" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | COCONO STAGE 14:55〜
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'HAPPY'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

@@ -1,0 +1,57 @@
+---
+//pageable: true
+//per_page: 3
+title: 'LAURENCE PHILOMENE'
+ogtype: 'website'
+ogimage: 'lineup/2017/art/laurence-philomene.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | LAURENCE PHILOMENE
+    .photo
+      = image_tag '/images/lineup/2017/art/laurence-philomene.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | Laurence is a 23 year old freelance photographer, director and curator living in Montreal. Mentored by Ivan Shaw (excutive photo director at Vogue) and Curator of the Coven Collective & Camp Gallery. Working around themes of gender identity, softness & color theory.
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://www.laurencephilomene.com/', 'http://www.laurencephilomene.com/', :target => '_blank'
+      .twitter
+        | Instagram 
+        = link_to '@laurencephilomene', 'https://www.instagram.com/laurencephilomene/', :target => '_blank'
+    
+    .mb-70
+
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'LAURENCE PHILOMENE'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+

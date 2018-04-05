@@ -2,6 +2,7 @@
 //pageable: true
 //per_page: 3
 title: 'SUPPORTER'
+ogimage: 'ogp.jpg'
 ---
 
 article#main
@@ -50,7 +51,7 @@ article#main
       | cocono fest.実行委員会は、九州で活動しているアーティストの作品を、より多くの人に知ってもらい広げていく場所を実現するため発足しました。また、より多くの作品に触れることができる状況をきっかけに、消費者側の意識改革にもつなげていきたいと考えています。
       br
       br
-      | リスナーにとってもアーティスト側にとっても、「KYUSHU POP UP STAGEから始まり、COCONO STAGEへステップアップ」という流れのなかで、「無料で音楽を楽しむ／楽しませるステージから、対価を支払う／受け取るステージへのステップアップ」が感じられる場所を作ることが目標です。
+      | リスナーにとってもアーティスト側にとっても、「KYUSHU POP UP FLOORから始まり、COCONO STAGEへステップアップ」という流れのなかで、「無料で音楽を楽しむ／楽しませるステージから、対価を支払う／受け取るステージへのステップアップ」が感じられる場所を作ることが目標です。
       br
       br
       | まだまだ未成熟なイベントではありますが、本趣旨にご賛同いただけるようでしたら、何卒ご支援ご協力のほどよろしくお願いいたします。
@@ -62,12 +63,20 @@ article#main
 
     / その年のcocono fest.を支援してくださる企業のロゴを掲載
 
-    /.subhead
+    .subhead
+      h2
+        | 後援
+        span
+          | SUPPORTER
+    .supporter-image-large
+      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", 'http://www.city.fukuoka.lg.jp/', :target => '_blank'
+    
+    .subhead
       h2
         | 協賛
         span
           | SPONSOR
-    /br
+    br
     /.grade
       h3
         | GOLD
@@ -75,35 +84,28 @@ article#main
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
       = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /hr
-    /.grade
+    .grade
       h3
         | BRONZE
-    /.supporter-image-medium
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /hr
-    /.grade
+    .supporter-image-medium
+      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", 'http://tsutaya.tsite.jp/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/hmv_hakata.png"}", 'http://www.hmv.co.jp/st/eventlist/BHK/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/shimamura_gakki.jpg"}", 'http://www.shimamura.co.jp/hakata/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/mikasa_tokushu_kogyo.jpg"}", 'http://mikasakk.co.jp/', :target => '_blank'
+    .grade
       h3
         | COCONO
-    /.supporter-image-small
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-      = link_to "#{image_tag "/images/supporters/tsutaya.jpeg"}", '', :target => '_blank'
-    /br
-
-    /.subhead
+    .supporter-image-small
+      = link_to "#{image_tag "/images/supporters/fukuoka_ijyu_keikaku.jpg"}", 'http://fukuoka-ijyu.jp/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/itonomori.jpg"}", 'https://www.ito-mori.com/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/mrt.jpg"}", 'http://321.mrt-studio.jp/', :target => '_blank'
+    .subhead
       h2
-        | 後援
+        | 協力
         span
           | SUPPORTER
-    /.supporter-image-large
-      = link_to "#{image_tag "/images/supporters/fukuoka_city.png"}", 'http://www.city.fukuoka.lg.jp/', :target => '_blank'
-    
+    .supporter-image-small
+      = link_to "#{image_tag "/images/supporters/place.jpg"}", 'http://www.place-edu.com/', :target => '_blank'
+      = link_to "#{image_tag "/images/supporters/ritomon.jpg"}", 'http://litomon.plus/', :target => '_blank'
+
     .clearfix

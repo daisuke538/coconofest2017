@@ -1,0 +1,103 @@
+---
+//pageable: true
+//per_page: 3
+title: 'IRIKO'
+ogtype: 'website'
+ogimage: 'lineup/2017/live/iriko.jpg'
+---
+
+article#main
+  section#artist-detail-info
+    .name
+      | IRIKO
+    .photo
+      = image_tag '/images/lineup/2017/live/iriko.jpg'
+    .contents-headline
+      | PROFILE
+    hr
+    .profile
+      | 2004年、福岡県久留米市にて結成した4人組ロックバンド（現在サポートドラム）。
+      br
+      | 厚みのある力強いボトムと、福岡特有の土着的でざらざらしたギターサウンドに、小学の同級生から成るオリジナルメンバーのドライブ感溢れる息の合った演奏が魅力。
+      br
+      | ソリッドでタフなアンサンブルに、Vo./Gu.鶴の強くしなやかな声で歌う。
+      br
+      | 九州を拠点に、全国各地に神出鬼没。
+    .contents-headline
+      | ACCOUNTS
+    hr
+    .accounts
+      .website
+        | WEBサイト 
+        = link_to 'http://big-s-58-mos13.wixsite.com/iriko', 'http://big-s-58-mos13.wixsite.com/iriko', :target => '_blank'
+      .twitter
+        | Twitter 
+        = link_to '@iriko_official', 'https://twitter.com/iriko_official', :target => '_blank'
+    .contents-headline
+      | STAFF COMMENT
+    hr
+    .staff-comment
+      | 記憶に新しい去年の11月26日に開催されたビートステーションでのワンマンライブ。
+      br
+      | そこには2004年の結成から12年経ち、覚悟を携えたIRIKOの姿があった。
+      br
+      | 多くの手が上がり、ステージからの力強い音を皆が一体となって感じていた。
+      br
+      br
+      | 「バンドマンから人気のあるバンドは売れない」なんてことを囁かれる。
+      br
+      | 彼らは間違いなくバンドマンがだいすきなバンドだ。
+      br
+      | ワンマンライブでも多くのバンドマンが集まり、彼らの姿を目に焼き付けた(私もそのひとり)。
+      br
+      | しかし、IRIKOはそんな定説をぶっ飛ばしてくれる。そう信じている。
+      br
+      | だってこんなにかっこよくて、美しくて、最高のバンド、認知されないとおかしいじゃないか！
+      br
+      br
+      | アルバム『愛は祈りのように』リリース後には4本のMV製作、黒猫チェルシー、MASS OF THE FERMENTING DREGS、toricotとの怒涛の3ヶ月連続ツーマン、シングル『YOUTH』をリリースするなど、更に破竹の勢いで前進するIRIKO。
+      br
+      | 本人達の気持ちはわからないが、私は福岡代表バンドはIRIKOで間違いないと思っている。
+      br
+      | このフェスで「ウィーアーIRIKO！フロムフクオカ！クルメシティー！！」という叫びが聞けると思うと、今からわくわくする。
+      br
+      br
+      | そして一昨年、cocono fest.の前身であるSEACOAST SOUNDS FUKUOKAにおいて、多大な迷惑を掛けてしまったのにも拘らず、また出演してくれると決めてくれたIRIKOに、深い敬意と感謝を込めて、お礼を述べます。
+      br
+      | 本当にありがとう。
+    .contents-headline
+      | MOVIE
+    hr
+    .youtube
+      iframe width="100%" height="400" src="https://www.youtube.com/embed/yVbiIzbvmOE" frameborder="0" allowfullscreen
+    .contents-headline
+      | TIME TABLE
+    hr
+    .timetable
+      | COCONO STAGE 19:25〜
+  
+    / アーティストに関する記事をピックアップ
+    / 6記事まで表示するように
+    section#pickup-article
+      - blog.tags.each do |tag, articles|
+        - if tag == 'IRIKO'
+          .tag-headline
+            = '#' + tag + ' 関連記事'
+          #pickup-article-inner 
+            - articles.first(6).each do |article|
+              .article-card
+                .card-eyecatch
+                  = link_to "#{image_tag "/posts/#{article.date.strftime('%Y')}/#{article.date.strftime('%m')}/#{article.date.strftime('%d')}/#{article.title}/images/eyecatch/eyecatch.jpg"}", article
+                .card-text
+                  .card-text-top
+                    .card-category
+                      = link_to article.data.category, category_path(article.data.category), :class => 'article-category'
+                    .card-tags
+                      - article.tags.each_with_index do |tag, j| 
+                        = link_to '#'+tag, tag_path(tag), :class => 'article-tag'
+                    .clearfix
+                    .article-date
+                      = article.date.strftime('%Y') + '.' + article.date.strftime('%m') + '.' + article.date.strftime('%d')
+                  h3
+                    = link_to article.data.title_jp, article
+
